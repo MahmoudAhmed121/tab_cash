@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animate_do: ^3.0.2
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   flutter:
@@ -35,7 +36,10 @@ dependencies:
   flutter_svg: ^2.0.5
   get: ^4.6.5
   google_fonts: ^4.0.4
+  local_auth: ^2.1.6
   shared_preferences: ^2.1.0
+  
+  persistent_bottom_nav_bar: ^5.0.2
 
 dev_dependencies:
   flutter_test:
