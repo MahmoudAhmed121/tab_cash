@@ -10,6 +10,8 @@ import 'package:tab_cach/features/login/view/widgets/custom_buttom.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_text_form_faild.dart';
 import 'package:tab_cach/features/regis/presentation/view/regis_view.dart';
 
+import 'custom_forgot_password.dart';
+
 class CustomLoginModelSheet extends StatefulWidget {
   CustomLoginModelSheet({
     super.key,
@@ -27,88 +29,99 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
 
   final TextEditingController passwordEditingController =
       TextEditingController();
-  final LocalAuthentication auth = LocalAuthentication();
 
   final GlobalKey<FormState> key = GlobalKey();
+  final LocalAuthentication auth = LocalAuthentication();
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(
+      Duration(seconds: 0),
+      () {
+        _authAuth();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    double heightScreen = MediaQuery.of(context).size.height;
+    double widthScreen = MediaQuery.of(context).size.width;
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
+        padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.09),
         child: Form(
           key: key,
           child: Column(
             children: [
               SizedBox(
-                height: 8,
+                height: heightScreen*0.009,
               ),
               Container(
-                width: 80,
-                height: 5,
+                width: widthScreen*0.188,
+                height: heightScreen*0.0054,
                 decoration: BoxDecoration(
-                  color: kDescriptionText,
-                  border: Border.all(),
+                  color: kDividerColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
               SizedBox(
-                height: 14,
+                height: heightScreen*.03,
               ),
               Text(
                 widget.text,
                 style: Style.textStyle30.copyWith(color: kSiginColor),
               ),
               SizedBox(
-                height: 36,
+                height: heightScreen*0.06,
               ),
-              CustomTextFormFaild(
-                hintText: "Phone Number",
-                obscureText: false,
-                validator: (textOne) {
-                  if (textOne!.length < 11 ) {
+              SizedBox(
+                height: heightScreen*0.09,
+                child: CustomTextFormFaild(
+                  hintText: "Phone Number",
+                  obscureText: false,
+                  validator: (TextTwo) {
                     return "You should inter a valid Phone Number";
-                  }
-                  return null;
-                },
-                textEditingController: phoneEditingController,
-                suffixIcon: Icon(
-                  Icons.visibility_off,
-                  color: kDescriptionText,
+                  },
+                  onSaved: (value){},
+                  textEditingController: passwordEditingController,
                 ),
-                textInputType: TextInputType.phone,
               ),
               SizedBox(
-                height: 12,
-              ),
-              CustomTextFormFaild(
-                hintText: "Password",
-                obscureText: false,
-                validator: (TextTwo) {
-                  return null;
-                },
-                textEditingController: passwordEditingController,
+                height: heightScreen*0.02,
               ),
               SizedBox(
-                height: 16,
-              ),
-              CustomTextFormFaild(
-                hintText: "Confirm Password",
-                obscureText: false,
-                validator: (TextTwo) {
-                  return null;
-                },
-                textEditingController: passwordEditingController,
+                height: heightScreen*0.09,
+                child: CustomTextFormFaild(
+                  hintText: "Password",
+                  obscureText: true,
+                  validator: (textOne) {
+                    if (textOne!.length < 11) {
+                      return "You should inter a valid password ";
+                    }
+                    return null;
+                  },
+                  onSaved: (value){},
+                  textEditingController: phoneEditingController,
+                  suffixIcon: Icon(
+                    Icons.visibility_off,
+                    color: kSiginColor,
+                  ),
+                  textInputType: TextInputType.phone,
+                ),
               ),
               SizedBox(
-                height: 15,
+                height: heightScreen*0.04,
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(CustomForGotPassword());
+                    },
                     child: Text("Forget password?",
                         style: GoogleFonts.josefinSans(
                             color: kDescriptionText,
@@ -118,7 +131,7 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
                 ],
               ),
               SizedBox(
-                height: 72,
+                height: heightScreen*0.09,
               ),
               CustomButton(
                 onPressed: () {
@@ -127,7 +140,7 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
                 text: "Login",
               ),
               SizedBox(
-                height: 16,
+                height: heightScreen*0.02,
               ),
               InkWell(
                 onTap: () {
@@ -151,7 +164,9 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
       bool authenticate = await auth.authenticate(
         localizedReason: "gamed",
         options: AuthenticationOptions(
-            stickyAuth: true, biometricOnly: true, sensitiveTransaction: true),
+          stickyAuth: true,
+          biometricOnly: true,
+        ),
       );
       print(authenticate);
     } on PlatformException {}

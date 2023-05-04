@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
+import 'package:tab_cach/features/login/view/widgets/custom_otp_code.dart';
+import 'features/login/view/manager/phone_auth/phone_auth_cubit.dart';
+import 'features/onbarding/presentation/view/manager/onboarding_boc/page_view_indicator_bloc.dart';
 import 'features/splach/presentation/view/splach_view.dart';
 
 void main() {
@@ -13,12 +17,24 @@ class TabCach extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      
-      theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: kBackGroundColor,
-          textTheme: GoogleFonts.promptTextTheme()),
-      home: SplachView(),
+    return MultiBlocProvider(
+      providers: [
+
+        BlocProvider(
+          create: (context) => PhoneAuthCubit(),
+        ),
+        BlocProvider(
+          create: (context) => PageViewIndicatorBloc(),
+        ),
+      ],
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: kBackGroundColor,
+            textTheme: GoogleFonts.promptTextTheme()),
+        home: SplachView(),
+      ),
     );
   }
 }
+

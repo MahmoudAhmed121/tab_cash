@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/style.dart';
-import 'package:tab_cach/features/login/view/widgets/custom_buttom.dart';
 
 class SendCode extends StatelessWidget {
   const SendCode({super.key});
@@ -9,69 +9,69 @@ class SendCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        leadingWidth: 90,
-        leading: Padding(
-          padding: const EdgeInsets.only(
-            top: 15,
-            left: 30,
-          ),
-          child: ElevatedButton(
-            onPressed: () {},
-            child: Icon(Icons.arrow_back_ios_rounded),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: kButtomBack,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
-        backgroundColor: kBackGroundColor,
-        elevation: 0,
-      ),
+      appBar: appBar(context),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding:
-              const EdgeInsets.only(bottom: 258, top: 268, left: 30, right: 30),
-          child: Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(23),
-                  color: kContainerColor,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Will send a PIN code to\nactivate your account",
-                      style: Style.textStyle30,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 13),
-                      child: CustomButton(
-                          onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context) {
-                                return SendCode();
-                              },
-                            ));
-                          },
-                          text: "Send"),
-                    )
-                  ],
-                ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Container(
+              height: 368,
+              width: 400,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(23),
+                color: kContainerColor,
               ),
-            ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "A PIN will be send to you",
+                    style: Style.textStyle26.copyWith(
+                      fontWeight: FontWeight.w400
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Lottie.asset("assets/animations/loading.json",
+                  height: 100
+                  )
+                ],
+              ),
+            ),
           ),
         ),
       ),
     );
   }
+
+  AppBar appBar(context) {
+    return AppBar(
+      toolbarHeight: 70,
+      leadingWidth: 85,
+      leading: Padding(
+        padding: const EdgeInsets.only(
+          top: 15,
+          left: 30,
+        ),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back_ios_rounded),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kButtomBack,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: kBackGroundColor,
+      elevation: 0,
+    );
+  }
+
 }

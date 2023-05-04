@@ -9,13 +9,16 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double heightScreen = MediaQuery.of(context).size.height;
+    double widthScreen = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
             SizedBox(
-              height: 300,
+              height: heightScreen*0.32,
             ),
           
             Expanded(

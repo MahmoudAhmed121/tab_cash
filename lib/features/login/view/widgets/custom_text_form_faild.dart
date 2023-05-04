@@ -11,6 +11,7 @@ class CustomTextFormFaild extends StatelessWidget {
     this.suffixIcon,
     this.textEditingController,
     required this.validator,
+    required this.onSaved,
     this.textInputType,
   });
   final Widget? prefixIcon;
@@ -20,6 +21,7 @@ class CustomTextFormFaild extends StatelessWidget {
   final TextInputType? textInputType;
   final TextEditingController? textEditingController;
   final String? Function(String?)? validator;
+  final String? Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -32,8 +34,9 @@ class CustomTextFormFaild extends StatelessWidget {
           suffixIcon: suffixIcon,
           hintText: hintText,
           hintStyle: GoogleFonts.inter(
-            color: kDescriptionText,
-            fontSize: 16,
+            color: kDividerColor,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
           ),
           focusedBorder: focusborder(),
           border: border(),
@@ -50,6 +53,6 @@ class CustomTextFormFaild extends StatelessWidget {
   OutlineInputBorder focusborder() {
     return OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: kButtomColor));
+        borderSide: BorderSide(color: kTextFormFieldBorder));
   }
 }

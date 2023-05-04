@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "72862390213",
+    "project_id": "tap-cash-bebb",
+    "storage_bucket": "tap-cash-bebb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72862390213:android:99739523afbe5b2efc9dac",
+        "android_client_info": {
+          "package_name": "com.example.tab_cach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72862390213-h8ac5knvi6gejfukbsp9sdilvtp03pbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKoYiaX0NT-NvomJfXlmiGWWy0NVerPaE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72862390213-h8ac5knvi6gejfukbsp9sdilvtp03pbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

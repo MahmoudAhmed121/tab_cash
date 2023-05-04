@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_buttom.dart';
+import 'package:tab_cach/features/login/view/widgets/custom_otp_code.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_text_form_faild.dart';
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 
@@ -15,20 +14,23 @@ class CustomRegisSheet extends StatelessWidget {
 
   final String text;
   final TextEditingController phoneEditingController = TextEditingController();
-  final TextEditingController passwordEditingController = TextEditingController();
-   final TextEditingController ConfirmPasswordController = TextEditingController();
-    final TextEditingController passwordEditingControllerTwo = TextEditingController();
+  final TextEditingController passwordEditingController =
+      TextEditingController();
+  
+  
 
   @override
   Widget build(BuildContext context) {
+    double heightScreen = MediaQuery.of(context).size.height;
+    double widthScreen = MediaQuery.of(context).size.width;
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
+        padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.08),
         child: Column(
           children: [
             SizedBox(
-              height: 8,
+              height: heightScreen*0.01,
             ),
             Container(
               width: 80,
@@ -40,76 +42,75 @@ class CustomRegisSheet extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 14,
+              height: heightScreen*0.01,
             ),
             Text(
               text,
               style: Style.textStyle30.copyWith(color: kSiginColor),
             ),
             SizedBox(
-              height: 36,
-            ),
-            CustomTextFormFaild(
-              hintText: "Name",
-              obscureText: false,
-              validator: (TextOne) {
-                return null;
-              },
-              textEditingController: phoneEditingController,
+              height: heightScreen*0.03,
             ),
             SizedBox(
-              height: 12,
-            ),
-            CustomTextFormFaild(
-              hintText: "Phone Number",
-              obscureText: false,
-              validator: (TextOne) {
-                return null;
-              },
-              textEditingController: phoneEditingController,
-              textInputType: TextInputType.phone,
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            CustomTextFormFaild(
-              hintText: "Password",
-              obscureText: false,
-              validator: (TextTwo) {
-                return null;
-              },
-              suffixIcon: Icon(
-                Icons.visibility_off,
-                color: kDescriptionText,
+              height: heightScreen*0.09,
+              child: CustomTextFormFaild(
+                hintText: "Name",
+                obscureText: false,
+                validator: (TextOne) {
+                  return null;
+                },
+                onSaved: (value){},
+                textEditingController: phoneEditingController,
               ),
-              textEditingController: passwordEditingController,
             ),
             SizedBox(
-              height: 16,
+              height: heightScreen*0.02,
             ),
-              CustomTextFormFaild(
-              hintText: "Confirm Password",
-              obscureText: false,
-              validator: (TextTwo) {
-                return null;
-              },
-              suffixIcon: Icon(
-                Icons.visibility_off,
-                color: kDescriptionText,
+            SizedBox(
+              height: heightScreen*0.09,
+              child: CustomTextFormFaild(
+                hintText: "Phone Number",
+                obscureText: false,
+                validator: (TextOne) {
+                  return null;
+                },
+                onSaved: (value){},
+                textEditingController: phoneEditingController,
+                textInputType: TextInputType.phone,
               ),
-              textEditingController: passwordEditingControllerTwo,
             ),
             SizedBox(
-              height: 121,
+              height: heightScreen*0.02,
+            ),
+            SizedBox(
+              height: heightScreen*0.09,
+              child: CustomTextFormFaild(
+                hintText: "Password",
+                obscureText: false,
+                validator: (TextTwo) {
+                  return null;
+                },
+                onSaved: (value){},
+                suffixIcon: Icon(
+                  Icons.visibility_off,
+                  color: kDescriptionText,
+                ),
+                textEditingController: passwordEditingController,
+              ),
+            ),
+            SizedBox(
+              height: heightScreen*0.12,
             ),
             CustomButton(
               onPressed: () {
-           Navigator.push(context, MaterialPageRoute(builder:(context) {
-             return SendCode();
-           },));
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                  //  return SendCode();
+                    return CustomOtpCode();
+                  },
+                ));
               },
               text: "Sign up",
-              
             ),
           ],
         ),
