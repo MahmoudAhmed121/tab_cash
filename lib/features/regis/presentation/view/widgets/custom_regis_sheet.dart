@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_buttom.dart';
@@ -15,9 +13,10 @@ class CustomRegisSheet extends StatelessWidget {
 
   final String text;
   final TextEditingController phoneEditingController = TextEditingController();
-  final TextEditingController passwordEditingController = TextEditingController();
-   final TextEditingController ConfirmPasswordController = TextEditingController();
-    final TextEditingController passwordEditingControllerTwo = TextEditingController();
+  final TextEditingController passwordEditingController =
+      TextEditingController();
+  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -85,31 +84,17 @@ class CustomRegisSheet extends StatelessWidget {
               textEditingController: passwordEditingController,
             ),
             SizedBox(
-              height: 16,
-            ),
-              CustomTextFormFaild(
-              hintText: "Confirm Password",
-              obscureText: false,
-              validator: (TextTwo) {
-                return null;
-              },
-              suffixIcon: Icon(
-                Icons.visibility_off,
-                color: kDescriptionText,
-              ),
-              textEditingController: passwordEditingControllerTwo,
-            ),
-            SizedBox(
-              height: 121,
+              height: 108,
             ),
             CustomButton(
               onPressed: () {
-           Navigator.push(context, MaterialPageRoute(builder:(context) {
-             return SendCode();
-           },));
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return SendCode();
+                  },
+                ));
               },
               text: "Sign up",
-              
             ),
           ],
         ),

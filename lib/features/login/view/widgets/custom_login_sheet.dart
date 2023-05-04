@@ -7,6 +7,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_buttom.dart';
+import 'package:tab_cach/features/login/view/widgets/custom_forgot_password.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_text_form_faild.dart';
 import 'package:tab_cach/features/regis/presentation/view/regis_view.dart';
 
@@ -27,9 +28,19 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
 
   final TextEditingController passwordEditingController =
       TextEditingController();
-  final LocalAuthentication auth = LocalAuthentication();
 
   final GlobalKey<FormState> key = GlobalKey();
+  final LocalAuthentication auth = LocalAuthentication();
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(
+      Duration(seconds: 0),
+      () {
+        _authAuth();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +78,7 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
                 hintText: "Phone Number",
                 obscureText: false,
                 validator: (textOne) {
-                  if (textOne!.length < 11 ) {
+                  if (textOne!.length < 11) {
                     return "You should inter a valid Phone Number";
                   }
                   return null;
@@ -108,7 +119,9 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(CustomForGotPassword());
+                    },
                     child: Text("Forget password?",
                         style: GoogleFonts.josefinSans(
                             color: kDescriptionText,
@@ -151,7 +164,9 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
       bool authenticate = await auth.authenticate(
         localizedReason: "gamed",
         options: AuthenticationOptions(
-            stickyAuth: true, biometricOnly: true, sensitiveTransaction: true),
+          stickyAuth: true,
+          biometricOnly: true,
+        ),
       );
       print(authenticate);
     } on PlatformException {}

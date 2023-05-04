@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tab_cach/core/utils/assets.dart';
 import 'package:tab_cach/features/login/view/login_view.dart';
 
+
 class SplachBody extends StatefulWidget {
   const SplachBody({super.key});
 
@@ -38,4 +39,6 @@ class _SplachBodyState extends State<SplachBody> {
       ),
     );
   }
+
+  
 }
