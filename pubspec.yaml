@@ -29,10 +29,15 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animate_do: ^3.0.2
+  chain_animation: ^0.0.3
   cupertino_icons: ^1.0.2
+  iconsax: ^0.0.8
   dio: ^4.0.6
+  fl_chart: ^0.62.0
   flutter:
     sdk: flutter
+  flutter_font_icons: ^2.2.5
+  
   flutter_svg: ^2.0.5
   get: ^4.6.5
   google_fonts: ^4.0.4
@@ -45,6 +50,8 @@ dependencies:
   firebase_core: ^2.11.0
   firebase_auth: ^4.5.0
   pin_code_fields: ^7.4.0
+  align_positioned: ^3.0.0
+  
 
 dev_dependencies:
   flutter_test:

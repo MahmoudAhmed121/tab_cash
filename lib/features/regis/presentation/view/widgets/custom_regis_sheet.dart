@@ -4,7 +4,8 @@ import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_buttom.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_otp_code.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_text_form_faild.dart';
-import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
+
+
 
 class CustomRegisSheet extends StatelessWidget {
   CustomRegisSheet({
@@ -59,7 +60,9 @@ class CustomRegisSheet extends StatelessWidget {
                 validator: (TextOne) {
                   return null;
                 },
-                onSaved: (value){},
+                onSaved: (value){
+                  return null;
+                },
                 textEditingController: phoneEditingController,
               ),
             ),
@@ -74,7 +77,9 @@ class CustomRegisSheet extends StatelessWidget {
                 validator: (TextOne) {
                   return null;
                 },
-                onSaved: (value){},
+                onSaved: (value){
+                  return null;
+                },
                 textEditingController: phoneEditingController,
                 textInputType: TextInputType.phone,
               ),
@@ -90,7 +95,9 @@ class CustomRegisSheet extends StatelessWidget {
                 validator: (TextTwo) {
                   return null;
                 },
-                onSaved: (value){},
+                onSaved: (value){
+                  return null;
+                },
                 suffixIcon: Icon(
                   Icons.visibility_off,
                   color: kDescriptionText,

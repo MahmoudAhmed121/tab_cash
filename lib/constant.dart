@@ -13,11 +13,11 @@ const kTextFormFieldBorder = Color(0xff3F8DEB);
 const kPinActiveBorder = Color(0xff37B6E9);
 const kPinInActiveBorder = Color(0xff979797);
 const kPinInActiveField = Color(0xffD9D9D9);
+const kExpenseColor= Color(0xffD3D3D3);
+const kbackgroundbottomBar= Color(0xffDADADA);
+const ktextWoletColor= Color(0xff2C6280);
 
-
-
-
-
+ 
 
 
 

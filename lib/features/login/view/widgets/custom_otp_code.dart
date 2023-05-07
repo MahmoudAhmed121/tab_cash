@@ -6,7 +6,7 @@ import '../../../../constant.dart';
 import '../../../../core/utils/style.dart';
 import '../../../regis/presentation/view/widgets/custom_send_code_body.dart';
 import 'custom_buttom.dart';
-import 'custom_text_form_faild.dart';
+
 
 class CustomOtpCode extends StatelessWidget {
    CustomOtpCode({Key? key}) : super(key: key);

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:tab_cach/constant.dart';
+import 'package:tab_cach/core/utils/finger_print.dart';
 import 'package:tab_cach/core/utils/style.dart';
+import 'package:tab_cach/features/bottom_bar/presentation/view/bottom_nav_bar.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_buttom.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_text_form_faild.dart';
 import 'package:tab_cach/features/regis/presentation/view/regis_view.dart';
@@ -38,7 +39,7 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
     Future.delayed(
       Duration(seconds: 0),
       () {
-        _authAuth();
+        FingerPrint().authAuth();
       },
     );
   }
@@ -50,71 +51,77 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.09),
+        padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.09),
         child: Form(
           key: key,
           child: Column(
             children: [
               SizedBox(
-                height: heightScreen*0.009,
+                height: heightScreen * 0.009,
               ),
               Container(
-                width: widthScreen*0.188,
-                height: heightScreen*0.0054,
+                width: widthScreen * 0.188,
+                height: heightScreen * 0.0054,
                 decoration: BoxDecoration(
                   color: kDividerColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
               SizedBox(
-                height: heightScreen*.03,
+                height: heightScreen * .03,
               ),
               Text(
                 widget.text,
                 style: Style.textStyle30.copyWith(color: kSiginColor),
               ),
               SizedBox(
-                height: heightScreen*0.06,
+                height: heightScreen * 0.06,
               ),
               SizedBox(
-                height: heightScreen*0.09,
+                height: heightScreen * 0.09,
                 child: CustomTextFormFaild(
                   hintText: "Phone Number",
+                  textInputType: TextInputType.phone,
                   obscureText: false,
-                  validator: (TextTwo) {
-                    return "You should inter a valid Phone Number";
+                  validator: (textOne) {
+                    if (textOne!.isEmpty || textOne.length < 11)
+                      return "You should inter a valid Phone Number";
+                    return null;
                   },
-                  onSaved: (value){},
+                  onSaved: (value) {
+                    return null;
+                  },
                   textEditingController: passwordEditingController,
                 ),
               ),
               SizedBox(
-                height: heightScreen*0.02,
+                height: heightScreen * 0.02,
               ),
               SizedBox(
-                height: heightScreen*0.09,
+                height: heightScreen * 0.09,
                 child: CustomTextFormFaild(
                   hintText: "Password",
                   obscureText: true,
-                  validator: (textOne) {
-                    if (textOne!.length < 11) {
+                  validator: (textTwo) {
+                    if (textTwo!.isEmpty || textTwo.length < 11) {
                       return "You should inter a valid password ";
                     }
                     return null;
                   },
-                  onSaved: (value){},
+                  onSaved: (value) {
+                    return null;
+                  },
                   textEditingController: phoneEditingController,
                   suffixIcon: Icon(
                     Icons.visibility_off,
                     color: kSiginColor,
                   ),
-                  textInputType: TextInputType.phone,
+                 
                 ),
               ),
               SizedBox(
-                height: heightScreen*0.04,
+                height: heightScreen * 0.04,
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -131,16 +138,18 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
                 ],
               ),
               SizedBox(
-                height: heightScreen*0.09,
+                height: heightScreen * 0.09,
               ),
               CustomButton(
                 onPressed: () {
-                  if (key.currentState!.validate()) {}
+                  if (key.currentState!.validate()) {
+                    Get.to(BottomNavBarView());
+                  }
                 },
                 text: "Login",
               ),
               SizedBox(
-                height: heightScreen*0.02,
+                height: heightScreen * 0.02,
               ),
               InkWell(
                 onTap: () {
@@ -157,18 +166,5 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
         ),
       ),
     );
-  }
-
-  Future<void> _authAuth() async {
-    try {
-      bool authenticate = await auth.authenticate(
-        localizedReason: "gamed",
-        options: AuthenticationOptions(
-          stickyAuth: true,
-          biometricOnly: true,
-        ),
-      );
-      print(authenticate);
-    } on PlatformException {}
   }
 }
