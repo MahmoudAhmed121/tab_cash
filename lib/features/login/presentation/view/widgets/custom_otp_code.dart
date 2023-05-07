@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tab_cach/features/login/view/widgets/custom_build_pin_code_field.dart';
-
-import '../../../../constant.dart';
-import '../../../../core/utils/style.dart';
-import '../../../regis/presentation/view/widgets/custom_send_code_body.dart';
+import 'package:tab_cach/constant.dart';
+import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
+import '../../../../../core/utils/style.dart';
+import '../../../../../core/widgets/appbar.dart';
+import 'custom_build_pin_code_field.dart';
 import 'custom_buttom.dart';
 
 
@@ -21,7 +21,7 @@ class CustomOtpCode extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: sendCode.appBar(context),
+      appBar: appBar(context),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(

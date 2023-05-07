@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
-import 'package:tab_cach/features/login/view/widgets/custom_otp_code.dart';
-import 'features/login/view/manager/phone_auth/phone_auth_cubit.dart';
+import 'package:tab_cach/features/login/presentation/manager/phone_auth/phone_auth_cubit.dart';
 import 'features/onbarding/presentation/view/manager/onboarding_boc/page_view_indicator_bloc.dart';
 import 'features/splach/presentation/view/splach_view.dart';
 
@@ -26,6 +25,7 @@ class TabCach extends StatelessWidget {
         BlocProvider(
           create: (context) => PageViewIndicatorBloc(),
         ),
+       
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:tab_cach/core/utils/shared/cache_helber.dart';
 import 'package:tab_cach/core/utils/style.dart';
-import 'package:tab_cach/features/login/view/login_view.dart';
+import 'package:tab_cach/features/login/presentation/view/login_view.dart';
 import 'package:tab_cach/features/onbarding/presentation/view/widgets/custom_onboarding_smooth.dart';
 import '../../../../../constant.dart';
 import '../../../../../core/utils/assets.dart';
@@ -16,12 +16,19 @@ import '../manager/onboarding_boc/page_view_indicator_state.dart';
 
 class OnboardingBody extends StatelessWidget {
    OnboardingBody({Key? key}) : super(key: key);
-  PageController nextPage = PageController();
+ final PageController nextPage = PageController();
+ 
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
-
+void submit()async{
+   await CacheHelber.saveData(key: "skip", value: true).then((value) {
+    if(value){
+  Get.to(LoginView());
+    }
+  });
+}
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
@@ -43,9 +50,7 @@ class OnboardingBody extends StatelessWidget {
                       child: TextButton(
                         onPressed: () {},
                         child: TextButton(
-                          onPressed: () {
-                            Get.to(LoginView());
-                          },
+                          onPressed: submit,
                           child: Text(
                             "skip",
                             style: Style.textStyle26
@@ -133,7 +138,7 @@ class OnboardingBody extends StatelessWidget {
                                            duration: Duration(milliseconds: 900),
                                            curve: Curves.ease);
                                      }else{
-                                       Get.to(LoginView());
+                                      submit();
                                      }
                                     },
                                     child: Stack(
@@ -166,4 +171,6 @@ class OnboardingBody extends StatelessWidget {
       ),
     );
   }
+
+
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../../constant.dart';
+import '../../../../../constant.dart';
+
 
 
 class CustomBuildPinCodeField extends StatelessWidget {

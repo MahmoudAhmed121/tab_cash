@@ -5,6 +5,7 @@ import 'package:tab_cach/features/regis/presentation/view/widgets/custom_regis_s
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 
 import '../../../../../constant.dart';
+import '../../../../../core/widgets/appbar.dart';
 
 class RegisBody extends StatelessWidget {
   RegisBody({super.key});
@@ -16,7 +17,7 @@ class RegisBody extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: sendCode.appBar(context),
+      appBar: appBar(context),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(

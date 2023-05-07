@@ -8,7 +8,6 @@ import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/features/history/presentation/view/historyview.dart';
 import 'package:tab_cach/features/transaction/presentation/view/transaction_view.dart';
 
-import '../../../../home/presentation/view/home_view.dart';
 import '../../../../payments/presentation/view/payments_view.dart';
 
 
@@ -16,7 +15,7 @@ class BottomNavBarBody extends StatelessWidget {
   const BottomNavBarBody({super.key});
   List<Widget> _buildScreens() {
     return [
-      HomeView(),
+      
       TransactionView(),
       HistoryView(),
       PaymentsView(),

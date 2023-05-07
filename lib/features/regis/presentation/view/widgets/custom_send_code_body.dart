@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/style.dart';
+import 'package:tab_cach/features/login/presentation/view/widgets/custom_otp_code.dart';
 
-class SendCode extends StatelessWidget {
-  const SendCode({super.key});
+import '../../../../../core/widgets/appbar.dart';
 
+class SendCode extends StatefulWidget {
+  const SendCode();
+
+  @override
+  State<SendCode> createState() => _SendCodeState();
+}
+@override
+void initState() {
+ 
+  Future.delayed(Duration(seconds: 2),_navigator);
+}
+
+void _navigator(){
+  Get.to(CustomOtpCode());
+}
+class _SendCodeState extends State<SendCode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,31 +64,5 @@ class SendCode extends StatelessWidget {
     );
   }
 
-  AppBar appBar(context) {
-    return AppBar(
-      toolbarHeight: 70,
-      leadingWidth: 85,
-      leading: Padding(
-        padding: const EdgeInsets.only(
-          top: 15,
-          left: 30,
-        ),
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Icon(Icons.arrow_back_ios_rounded),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: kButtomBack,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-      ),
-      backgroundColor: kBackGroundColor,
-      elevation: 0,
-    );
-  }
-
+ 
 }
