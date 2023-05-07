@@ -10,8 +10,8 @@ class CustomTextFormFaild extends StatelessWidget {
     required this.obscureText,
     this.suffixIcon,
     this.textEditingController,
-    required this.validator,
-    required this.onSaved,
+     this.validator,
+     this.onSaved,
     this.textInputType,
   });
   final Widget? prefixIcon;

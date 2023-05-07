@@ -7,13 +7,12 @@ import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_co
 import '../../../../../constant.dart';
 
 class RegisBody extends StatelessWidget {
-   RegisBody({super.key});
+  RegisBody({super.key});
 
-SendCode sendCode = SendCode();
+  final SendCode sendCode = SendCode();
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
-    double widthScreen = MediaQuery.of(context).size.width;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -22,10 +21,9 @@ SendCode sendCode = SendCode();
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
-           
-            Lottie.asset("assets/animations/53332-bouncing-ball.json",
-            height: heightScreen*0.23,
-          
+            Lottie.asset(
+              "assets/animations/53332-bouncing-ball.json",
+              height: heightScreen * 0.23,
             ),
             Expanded(
               child: SlideInUp(

@@ -8,7 +8,7 @@ import 'package:tab_cach/core/utils/finger_print.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/features/bottom_bar/presentation/view/bottom_nav_bar.dart';
 import 'package:tab_cach/features/login/view/widgets/custom_buttom.dart';
-import 'package:tab_cach/features/login/view/widgets/custom_text_form_faild.dart';
+import 'package:tab_cach/core/widgets/custom_text_form_faild.dart';
 import 'package:tab_cach/features/regis/presentation/view/regis_view.dart';
 
 import 'custom_forgot_password.dart';
