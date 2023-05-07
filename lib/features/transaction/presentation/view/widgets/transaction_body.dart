@@ -7,14 +7,14 @@ import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_c
 
 import '../../../../../core/widgets/appbar.dart';
 
-class ContactPage extends StatefulWidget {
-  const ContactPage({Key? key}) : super(key: key);
+class TransactionBody extends StatefulWidget {
+  const TransactionBody({Key? key}) : super(key: key);
 
   @override
-  _ContactPageState createState() => _ContactPageState();
+  _TransactionBodyState createState() => _TransactionBodyState();
 }
 
-class _ContactPageState extends State<ContactPage> {
+class _TransactionBodyState extends State<TransactionBody> {
 
   SendCode sendCode = SendCode();
   @override

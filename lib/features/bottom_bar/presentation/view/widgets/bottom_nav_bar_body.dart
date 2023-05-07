@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_font_icons/flutter_font_icons.dart';
-
 import 'package:iconsax/iconsax.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tab_cach/features/children/presentation/view/children_view.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/features/history/presentation/view/historyview.dart';
 import 'package:tab_cach/features/transaction/presentation/view/transaction_view.dart';
-
 import '../../../../payments/presentation/view/payments_view.dart';
 
 
@@ -25,12 +23,12 @@ class BottomNavBarBody extends StatelessWidget {
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
-      PersistentBottomNavBarItem(
-        icon: Icon(Iconsax.home),
-        title: ("Home"),
-        activeColorPrimary: kPinActiveBorder,
-        inactiveColorPrimary: kBackGroundColor,
-      ),
+      // PersistentBottomNavBarItem(
+      //   icon: Icon(Iconsax.home),
+      //   title: ("Home"),
+      //   activeColorPrimary: kPinActiveBorder,
+      //   inactiveColorPrimary: kBackGroundColor,
+      // ),
       PersistentBottomNavBarItem(
         icon: Icon(Iconsax.card_send,),
         title: ("Transaction"),

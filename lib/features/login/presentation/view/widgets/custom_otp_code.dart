@@ -66,7 +66,10 @@ class CustomOtpCode extends StatelessWidget {
                     ),
                     Padding(
                       padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.05),
-                      child: CustomButton(onPressed: (){}, text: "Check"),
+                      child: CustomButton(
+                        onPressed: (){
+
+                      }, text: "Check"),
                     )
                   ],
                 ),
