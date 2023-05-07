@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/style.dart';
@@ -13,16 +14,21 @@ class SendCode extends StatefulWidget {
   @override
   State<SendCode> createState() => _SendCodeState();
 }
-@override
-void initState() {
- 
-  Future.delayed(Duration(seconds: 2),_navigator);
-}
 
-void _navigator(){
-  Get.to(CustomOtpCode());
-}
+
 class _SendCodeState extends State<SendCode> {
+    @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(
+      Duration(seconds: 3),
+      ()  {
+      Get.to(CustomOtpCode());
+      }
+          
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

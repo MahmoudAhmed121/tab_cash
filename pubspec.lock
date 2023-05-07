@@ -65,14 +65,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  chain_animation:
-    dependency: "direct main"
-    description:
-      name: chain_animation
-      sha256: "436ab0d8cd31f26c45a8f45b4cd33661f55901a457e33bb8efb41507cf78bdbd"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.3"
   characters:
     dependency: transitive
     description:
