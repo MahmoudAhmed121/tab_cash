@@ -3,36 +3,19 @@
 import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:tab_cach/features/transaction/data/model/transaction_model.dart';
 
 
 class CustomAnimationContact extends StatelessWidget {
    CustomAnimationContact({super.key});
-  final List<dynamic> _contacts = [
-    {
-      'name': 'John',
-      'avatar': 'assets/images/avatar-1.png',
-    },
-    {
-      'name': 'Samantha',
-      'avatar': 'assets/images/avatar-2.png',
-    },
-    {
-      'name': 'Mary',
-      'avatar': 'assets/images/avatar-3.png',
-    },
-    {
-      'name': 'Julian',
-      'avatar': 'assets/images/avatar-4.png',
-    },
-    {
-      'name': 'Sara',
-      'avatar': 'assets/images/avatar-5.png',
-    },
-    {
-      'name': 'Kabir Singh',
-      'avatar': 'assets/images/avatar-6.png',
-    }
-  ];
+final List<TransactionModel>  userContact = [
+  TransactionModel(image: "assets/images/1.png",name: "nada"),
+  TransactionModel(image: "assets/images/2.png",name: "Nouran"),
+  TransactionModel(image: "assets/images/3.png",name: "Lila"),
+  TransactionModel(image: "assets/images/4.png",name: "Emain"),
+  TransactionModel(image: "assets/images/5.png",name: "Yara"),
+  TransactionModel(image: "assets/images/6.png",name: "Tasneem"),
+];
   @override
   Widget build(BuildContext context) {
     return  FadeInUp(
@@ -102,7 +85,7 @@ class CustomAnimationContact extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 30,
                   backgroundColor: Colors.green.shade100,
-                  backgroundImage: AssetImage(_contacts[index]['avatar']),
+                  backgroundImage: AssetImage(userContact[index].image),
                 ),
               ),
             ],

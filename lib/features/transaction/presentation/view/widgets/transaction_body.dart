@@ -6,17 +6,13 @@ import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_co
 import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_contact_widgets.dart';
 
 import '../../../../../core/widgets/appbar.dart';
+import '../../../data/model/transaction_model.dart';
 
-class TransactionBody extends StatefulWidget {
-  const TransactionBody({Key? key}) : super(key: key);
+class TransactionBody extends StatelessWidget {
+   TransactionBody({Key? key}) : super(key: key);
 
-  @override
-  _TransactionBodyState createState() => _TransactionBodyState();
-}
+  final SendCode sendCode = SendCode();
 
-class _TransactionBodyState extends State<TransactionBody> {
-
-  SendCode sendCode = SendCode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,32 +52,14 @@ class _TransactionBodyState extends State<TransactionBody> {
 
 class CustomListView extends StatelessWidget {
   CustomListView({super.key});
-  final List<dynamic> _contacts = [
-    {
-      'name': 'Nada',
-      'avatar': 'assets/images/Ellipse 16.png',
-    },
-    {
-      'name': 'Nada',
-      'avatar': 'assets/images/Ellipse 14.png',
-    },
-    {
-      'name': 'Heba',
-      'avatar': 'assets/images/avatar-3.png',
-    },
-    {
-      'name': 'Julian',
-      'avatar': 'assets/images/avatar-4.png',
-    },
-    {
-      'name': 'Sara',
-      'avatar': 'assets/images/avatar-5.png',
-    },
-    {
-      'name': 'Kabir Singh',
-      'avatar': 'assets/images/avatar-6.png',
-    }
-  ];
+  final List<TransactionModel>  userContact = [
+  TransactionModel(image: "assets/images/1.png",name: "nada"),
+  TransactionModel(image: "assets/images/2.png",name: "Nouran"),
+  TransactionModel(image: "assets/images/3.png",name: "Lila"),
+  TransactionModel(image: "assets/images/4.png",name: "Emain"),
+  TransactionModel(image: "assets/images/5.png",name: "Yara"),
+  TransactionModel(image: "assets/images/6.png",name: "Tasneem"),
+];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -89,7 +67,7 @@ class CustomListView extends StatelessWidget {
       padding: EdgeInsets.only(left: 20),
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
-        itemCount: _contacts.length,
+        itemCount: userContact.length,
         itemBuilder: (context, index) {
           return FadeInRight(
             duration: Duration(milliseconds: (index * 100) + 500),
@@ -102,13 +80,13 @@ class CustomListView extends StatelessWidget {
                       CircleAvatar(
                         radius: 30,
                         backgroundColor: Colors.red[100],
-                        backgroundImage: AssetImage(_contacts[index]['avatar']),
+                        backgroundImage: AssetImage(userContact[index].image),
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
-                        _contacts[index]['name'],
+                        "${userContact[index].name}",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w600),
                       ),

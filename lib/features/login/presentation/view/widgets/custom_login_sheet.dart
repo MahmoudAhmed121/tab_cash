@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
-import 'package:tab_cach/core/utils/finger_print.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/features/bottom_bar/presentation/view/bottom_nav_bar.dart';
 import 'package:tab_cach/core/widgets/custom_text_form_faild.dart';
@@ -12,6 +11,7 @@ import 'package:tab_cach/features/login/presentation/manager/login/login_cubit_c
 import 'package:tab_cach/features/login/presentation/view/widgets/custom_buttom.dart';
 import 'package:tab_cach/features/regis/presentation/view/regis_view.dart';
 
+import '../../../../../core/utils/shared/cache_helber.dart';
 import 'custom_forgot_password.dart';
 
 class CustomLoginModelSheet extends StatefulWidget {
@@ -28,21 +28,11 @@ class CustomLoginModelSheet extends StatefulWidget {
 class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
   final GlobalKey<FormState> key = GlobalKey();
 
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(
-      Duration(seconds: 0),
-      () {
-        FingerPrint().authAuth();
-      },
-    );
-  }
-
   final TextEditingController phoneEditingController = TextEditingController();
 
   final TextEditingController passwordEditingController =
       TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
@@ -52,16 +42,22 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            Get.snackbar(
-              "Message",
-              "",
-              backgroundColor: Colors.grey,
-              messageText: Text(
-                "Login Success",
-                style: TextStyle(color: Colors.white),
-              ),
-            );
-            Get.to(BottomNavBarView());
+            final token = CacheHelber.saveData(
+                    key: "token", value: state.loginModel.access)
+                .then((value) {
+              if (value) {
+                Get.snackbar(
+                  "Message",
+                  "",
+                  backgroundColor: Colors.grey,
+                  messageText: Text(
+                    "Login Success",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                );
+                Get.to(BottomNavBarView());
+              }
+            });
           }
           if (state is LoginFailure) {
             Get.snackbar(

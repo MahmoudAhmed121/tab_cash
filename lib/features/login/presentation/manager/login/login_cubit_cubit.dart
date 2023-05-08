@@ -2,6 +2,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tab_cach/features/login/data/model/loginModel.dart';
+
 part 'login_cubit_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -20,7 +22,8 @@ static LoginCubit get(context)=> BlocProvider.of(context);
           "password": password,
         },
       );
-      emit(LoginSuccess());
+     final data = LoginModel.fromJson(response.data);
+      emit(LoginSuccess(loginModel: data));
     } on DioError catch (e) {
       print(e);
       if (e.response!.statusCode == 401) {
