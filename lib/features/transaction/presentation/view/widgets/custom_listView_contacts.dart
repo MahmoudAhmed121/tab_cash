@@ -38,7 +38,7 @@ class CustomListView extends StatelessWidget {
                       Container(
                         child: CircleAvatar(
                           radius: 30,
-                          backgroundColor: Colors.red[100],
+                          backgroundColor: kContainerColor,
                           backgroundImage: AssetImage(userContact[index].image),
                         ),
                       ),

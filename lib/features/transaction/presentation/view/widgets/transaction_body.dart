@@ -57,7 +57,7 @@ class TransactionBody extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    left: widthScreen * 0.03, bottom: heightScreen * 0.04),
+                    left: widthScreen * 0.03, bottom: heightScreen * 0.01),
                 child: Text(
                   "Recent",
                   style: GoogleFonts.prompt(

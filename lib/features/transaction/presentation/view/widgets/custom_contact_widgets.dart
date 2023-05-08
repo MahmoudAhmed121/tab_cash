@@ -3,27 +3,33 @@
 import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tab_cach/features/transaction/data/model/transaction_model.dart';
+
+import '../../../../../constant.dart';
+import '../../../data/repo/contact_repo.dart';
 
 
 class CustomAnimationContact extends StatelessWidget {
    CustomAnimationContact({super.key});
-final List<TransactionModel>  userContact = [
+/*final List<TransactionModel>  userContact = [
   TransactionModel(image: "assets/images/1.png",name: "nada"),
   TransactionModel(image: "assets/images/2.png",name: "Nouran"),
   TransactionModel(image: "assets/images/3.png",name: "Lila"),
   TransactionModel(image: "assets/images/4.png",name: "Emain"),
   TransactionModel(image: "assets/images/5.png",name: "Yara"),
   TransactionModel(image: "assets/images/6.png",name: "Tasneem"),
-];
+];*/
   @override
   Widget build(BuildContext context) {
+    double heightScreen = MediaQuery.of(context).size.height;
+    double widthScreen = MediaQuery.of(context).size.width;
     return  FadeInUp(
             duration: Duration(milliseconds: 500),
             child: Container(
               width: double.infinity,
-              height: 300,
-              padding: EdgeInsets.all(90.0),
+              height: heightScreen*0.3,
+              padding: EdgeInsets.all(widthScreen*0.15),
              
               child: Stack(
                 children: [
@@ -33,7 +39,7 @@ final List<TransactionModel>  userContact = [
                           wait: Duration(milliseconds: 1000),
                           widget: AnimatedAlignPositioned(
                             dx: 0,
-                            dy: 150,
+                            dy: 135,
                             duration: Duration(seconds: 1),
                             rotateDegrees: 0,
                             touch: Touch.middle,
@@ -44,7 +50,7 @@ final List<TransactionModel>  userContact = [
                           wait: Duration(seconds: 2),
                           widget: AnimatedAlignPositioned(
                             dx: i / 360,
-                            dy: 150,
+                            dy: 135,
                             duration: Duration(seconds: 1),
                             rotateDegrees: i,
                             touch: Touch.middle,
@@ -75,21 +81,18 @@ final List<TransactionModel>  userContact = [
           //   )
           // );
         },
-        child: Container(
-          margin: EdgeInsets.only(right: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Transform.rotate(
-                angle: number / 60 * 5.2,
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.green.shade100,
-                  backgroundImage: AssetImage(userContact[index].image),
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Transform.rotate(
+              angle: number / 60 * 5.2,
+              child: CircleAvatar(
+                radius: 30,
+                backgroundColor:kContainerColor,
+                backgroundImage: AssetImage(userContact[index].image),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
