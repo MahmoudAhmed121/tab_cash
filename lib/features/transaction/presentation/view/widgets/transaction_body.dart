@@ -14,7 +14,7 @@ import '../../../data/model/transaction_model.dart';
 import 'custom_listView_contacts.dart';
 
 class TransactionBody extends StatelessWidget {
-   TransactionBody({Key? key}) : super(key: key);
+  TransactionBody({Key? key}) : super(key: key);
 
   final SendCode sendCode = SendCode();
 
@@ -26,44 +26,71 @@ class TransactionBody extends StatelessWidget {
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.05).copyWith(top:heightScreen*0.06 ),
+          padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.05).copyWith(top: heightScreen * 0.06),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              Text("Transactions",style : GoogleFonts.josefinSans(textStyle: Style.textStyle26,color: kContainerColor),),
+              Text(
+                "Transactions",
+                style: GoogleFonts.josefinSans(
+                    textStyle: Style.textStyle26, color: kContainerColor),
+              ),
               SizedBox(
-                height: 20,
+                height: heightScreen*0.01,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Contacts",style : GoogleFonts.prompt(textStyle: Style.textStyle20,color: kPinActiveBorder,fontWeight: FontWeight.w400),),
-                  Icon(Icons.add_box_outlined ,color: kbackgroundbottomBar,size: 30, ),
+                  Text(
+                    "Contacts",
+                    style: GoogleFonts.prompt(
+                        textStyle: Style.textStyle20,
+                        color: kPinActiveBorder,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  Icon(
+                    Icons.add_box_outlined,
+                    color: kbackgroundbottomBar,
+                    size: 28,
+                  ),
                 ],
               ),
               Padding(
-                padding:  EdgeInsets.only(left:widthScreen*0.03,bottom: heightScreen*0.04),
+                padding: EdgeInsets.only(
+                    left: widthScreen * 0.03, bottom: heightScreen * 0.04),
                 child: Text(
                   "Recent",
-                  style : GoogleFonts.prompt(textStyle: Style.textStyle14,color: kPinInActiveBorder,fontWeight: FontWeight.w300),
+                  style: GoogleFonts.prompt(
+                      textStyle: Style.textStyle14,
+                      color: kPinInActiveBorder,
+                      fontWeight: FontWeight.w300),
                 ),
               ),
               SizedBox(
-                  child: CustomAnimationContact()
-              ,),
-              SizedBox(
-                height: 30,
+                child: CustomAnimationContact(),
               ),
               FadeInRight(
                 duration: Duration(milliseconds: 500),
                 child: Padding(
-                  padding:EdgeInsets.only( bottom: heightScreen*0.01, top: heightScreen*0.01),
+                  padding: EdgeInsets.only(
+                      bottom: heightScreen * 0.01, top: heightScreen * 0.02),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("All Contact",style : GoogleFonts.prompt(textStyle: Style.textStyle16,color: kPinInActiveBorder,fontWeight: FontWeight.w400),),
-                      Text("See All",style : GoogleFonts.prompt(textStyle: Style.textStyle14,color: kPinActiveBorder,fontWeight: FontWeight.w400),),
+                      Text(
+                        "All Contact",
+                        style: GoogleFonts.prompt(
+                            textStyle: Style.textStyle16,
+                            color: kPinInActiveBorder,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        "See All  ",
+                        style: GoogleFonts.prompt(
+                            textStyle: Style.textStyle12,
+                            color: kPinActiveBorder,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ],
                   ),
                 ),
@@ -76,7 +103,3 @@ class TransactionBody extends StatelessWidget {
     );
   }
 }
-
-
-
-
