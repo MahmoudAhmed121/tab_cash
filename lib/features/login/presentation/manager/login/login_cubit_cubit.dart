@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tab_cach/features/login/data/model/loginModel.dart';
-
 part 'login_cubit_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -13,9 +12,7 @@ static LoginCubit get(context)=> BlocProvider.of(context);
   Future<void> postData({required String  email,required  String password}) async {
     try {
       emit(LoginLoading());
-      final response = await Dio(BaseOptions(
-        
-      )).post(
+      final response = await Dio().post(
         "https://tabcash-backend.nourmohamed.com/accounts/api/token/",
         data: {
           "phone_number": email,
