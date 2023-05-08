@@ -17,7 +17,7 @@ const kExpenseColor= Color(0xffD3D3D3);
 const kbackgroundbottomBar= Color(0xffDADADA);
 const ktextWoletColor= Color(0xff2C6280);
 const kTextChartColor= Color(0xff9B9B9B);
- 
+ const kDividertColor= Color(0xff444444);
 // String token ="";
 
 
