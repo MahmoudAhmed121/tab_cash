@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/style.dart';
-import 'package:tab_cach/core/widgets/appbar.dart';
+import 'package:tab_cach/core/widgets/custom_appbar.dart';
 import 'package:tab_cach/core/widgets/custom_text_form_faild.dart';
 import 'package:tab_cach/features/login/presentation/view/widgets/custom_buttom.dart';
 
@@ -20,7 +20,7 @@ class CustomForGotPassword extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
 
-      appBar: appBar(context),
+      appBar: CustomAppBar(context),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(

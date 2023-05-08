@@ -11,6 +11,8 @@ import '../../../../home/presentation/view/home_view.dart';
 import '../../../../payments/presentation/view/payments_view.dart';
 import '../../../../transaction/presentation/view/widgets/transaction_view.dart';
 
+
+
 class BottomNavBarBody extends StatelessWidget {
   const BottomNavBarBody({super.key});
   List<Widget> _buildScreens() {
@@ -32,9 +34,7 @@ class BottomNavBarBody extends StatelessWidget {
         inactiveColorPrimary: kBackGroundColor,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(
-          Iconsax.card_send,
-        ),
+        icon: Icon(Iconsax.card_send,),
         title: ("Transaction"),
         activeColorPrimary: kPinActiveBorder,
         inactiveColorPrimary: kBackGroundColor,
@@ -62,12 +62,12 @@ class BottomNavBarBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double heightScreen = MediaQuery.of(context).size.height;
-    final double widthScreen = MediaQuery.of(context).size.width;
+    double heightScreen = MediaQuery.of(context).size.height;
+    double widthScreen = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: PersistentTabView(
         context,
-        navBarHeight: heightScreen * 0.072,
+        navBarHeight: heightScreen*0.072,
         screens: _buildScreens(),
         items: _navBarsItems(),
         confineInSafeArea: true,
