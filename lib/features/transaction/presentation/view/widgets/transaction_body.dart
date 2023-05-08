@@ -1,11 +1,15 @@
 import 'package:animate_do/animate_do.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:tab_cach/core/utils/style.dart';
 
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_contact_widgets.dart';
 
+import '../../../../../constant.dart';
 import '../../../../../core/widgets/appbar.dart';
+import '../../../../home/presentation/view/widgets/custom_Appbar_home.dart';
 import '../../../data/model/transaction_model.dart';
 
 class TransactionBody extends StatelessWidget {
@@ -15,40 +19,63 @@ class TransactionBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double heightScreen = MediaQuery.of(context).size.height;
+    double widthScreen = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar:  appBar(context),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            CustomAnimationContact(),
-            SizedBox(
-              height: 30,
-            ),
-            FadeInRight(
-              duration: Duration(milliseconds: 500),
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 20.0, bottom: 15.0, top: 10.0),
+        child: Padding(
+          padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.05).copyWith(top:heightScreen*0.06 ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+
+              Text("Transactions",style : GoogleFonts.josefinSans(textStyle: Style.textStyle24,color: kContainerColor),),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Contacts",style : GoogleFonts.prompt(textStyle: Style.textStyle20,color: kPinActiveBorder,fontWeight: FontWeight.w400),),
+                  Icon(Icons.add_box_outlined ,color: kbackgroundbottomBar,size: 30, ),
+                ],
+              ),
+              Padding(
+                padding:  EdgeInsets.only(left:widthScreen*0.03,bottom: heightScreen*0.04),
                 child: Text(
-                  'All Contacts',
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey.shade900,
-                      fontWeight: FontWeight.w500),
+                  "Recent",
+                  style : GoogleFonts.prompt(textStyle: Style.textStyle14,color: kPinInActiveBorder,fontWeight: FontWeight.w300),
                 ),
               ),
-            ),
-            CustomListView()
-          ],
+              SizedBox(
+                  child: CustomAnimationContact()
+              ,),
+              SizedBox(
+                height: 30,
+              ),
+              FadeInRight(
+                duration: Duration(milliseconds: 500),
+                child: Padding(
+                  padding:EdgeInsets.only( bottom: heightScreen*0.01, top: heightScreen*0.01),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("All Contact",style : GoogleFonts.prompt(textStyle: Style.textStyle16,color: kPinInActiveBorder,fontWeight: FontWeight.w400),),
+                      Text("See All",style : GoogleFonts.prompt(textStyle: Style.textStyle14,color: kPinActiveBorder,fontWeight: FontWeight.w400),),
+                    ],
+                  ),
+                ),
+              ),
+              CustomListView()
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
+
 
 class CustomListView extends StatelessWidget {
   CustomListView({super.key});
@@ -62,9 +89,10 @@ class CustomListView extends StatelessWidget {
 ];
   @override
   Widget build(BuildContext context) {
+    double heightScreen = MediaQuery.of(context).size.height;
+    double widthScreen = MediaQuery.of(context).size.width;
     return Container(
       height: MediaQuery.of(context).size.height - 200,
-      padding: EdgeInsets.only(left: 20),
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
         itemCount: userContact.length,
@@ -72,23 +100,30 @@ class CustomListView extends StatelessWidget {
           return FadeInRight(
             duration: Duration(milliseconds: (index * 100) + 500),
             child: Container(
+              height: heightScreen*0.11,
               margin: EdgeInsets.only(bottom: 20),
+              padding: EdgeInsets.only(left: widthScreen*0.06),
+              decoration: BoxDecoration(
+                color: ktextWoletColor,
+                borderRadius: BorderRadius.all(Radius.circular(12))
+              ),
               child: Row(
                 children: <Widget>[
                   Row(
                     children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.red[100],
-                        backgroundImage: AssetImage(userContact[index].image),
+                      Container(
+                        child: CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Colors.red[100],
+                          backgroundImage: AssetImage(userContact[index].image),
+                        ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
                         "${userContact[index].name}",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w600),
+                        style:  GoogleFonts.josefinSans(textStyle: Style.textStyle16,color: kContainerColor),
                       ),
                     ],
                   ),
@@ -96,7 +131,7 @@ class CustomListView extends StatelessWidget {
                   IconButton(
                     icon: Icon(
                       Icons.arrow_forward_ios,
-                      color: Colors.black,
+                      color: kContainerColor,
                       size: 15,
                     ),
                     onPressed: () {},

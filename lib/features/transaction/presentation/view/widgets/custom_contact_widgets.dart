@@ -78,7 +78,7 @@ final List<TransactionModel>  userContact = [
         child: Container(
           margin: EdgeInsets.only(right: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Transform.rotate(
                 angle: number / 60 * 5.2,

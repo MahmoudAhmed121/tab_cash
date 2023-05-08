@@ -6,6 +6,7 @@ class Images {
   static const polygon1 = "assets/images/Polygon1.svg";
   static const polygon2 = "assets/images/Mask Group.svg";
   static const arrow_right = "assets/images/arrow_right.svg";
+  static const person = "assets/images/Person.svg";
 
 
 

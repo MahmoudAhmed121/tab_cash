@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
+import 'package:tab_cach/features/home/presentation/view/home_view.dart';
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/appbar.dart';
+import '../../../../bottom_bar/presentation/view/bottom_nav_bar.dart';
 import 'custom_build_pin_code_field.dart';
 import 'custom_buttom.dart';
 
@@ -68,7 +71,7 @@ class CustomOtpCode extends StatelessWidget {
                       padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.05),
                       child: CustomButton(
                         onPressed: (){
-
+                          Get.to(BottomNavBarView());
                       }, text: "Check"),
                     )
                   ],
