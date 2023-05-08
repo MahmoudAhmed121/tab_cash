@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_font_icons/flutter_font_icons.dart';
@@ -8,7 +7,6 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tab_cach/features/children/presentation/view/children_view.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/features/history/presentation/view/historyview.dart';
-import 'package:tab_cach/features/splach/presentation/view/splach_view.dart';
 import 'package:tab_cach/features/transaction/presentation/view/transaction_view.dart';
 
 import '../../../../home/presentation/view/home_view.dart';
