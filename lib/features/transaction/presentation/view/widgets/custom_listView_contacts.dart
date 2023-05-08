@@ -1,11 +1,8 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../../../constant.dart';
 import '../../../../../core/utils/style.dart';
-import '../../../data/model/transaction_model.dart';
 import '../../../data/repo/contact_repo.dart';
 
 class CustomListView extends StatelessWidget {

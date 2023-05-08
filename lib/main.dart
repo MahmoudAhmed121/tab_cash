@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
+import 'package:tab_cach/features/home/data/repo/home_repo_impl.dart';
+import 'package:tab_cach/features/home/presentation/manager/cubit/statistics_cubit.dart';
 import 'package:tab_cach/features/login/presentation/manager/phone_auth/phone_auth_cubit.dart';
 import 'package:tab_cach/features/splach/presentation/view/splach_view.dart';
 import 'features/onbarding/presentation/view/manager/onboarding_boc/page_view_indicator_bloc.dart';
@@ -18,14 +20,15 @@ class TabCach extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-
         BlocProvider(
           create: (context) => PhoneAuthCubit(),
         ),
         BlocProvider(
           create: (context) => PageViewIndicatorBloc(),
         ),
-       
+        BlocProvider(
+          create: (context) => StatisticsCubit(HomeRepoImpl())..getStatis(),
+        )
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
@@ -37,4 +40,3 @@ class TabCach extends StatelessWidget {
     );
   }
 }
-
