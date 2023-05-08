@@ -22,6 +22,10 @@ abstract class Style {
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
+  static final textStyle18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+  );
    static final textStyle20 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w700,

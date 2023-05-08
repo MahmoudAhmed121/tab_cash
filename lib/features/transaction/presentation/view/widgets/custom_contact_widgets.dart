@@ -4,7 +4,9 @@ import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:tab_cach/features/transaction/data/model/transaction_model.dart';
+import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_send_money_contact.dart';
 
 import '../../../../../constant.dart';
 import '../../../data/repo/contact_repo.dart';
@@ -12,14 +14,6 @@ import '../../../data/repo/contact_repo.dart';
 
 class CustomAnimationContact extends StatelessWidget {
    CustomAnimationContact({super.key});
-/*final List<TransactionModel>  userContact = [
-  TransactionModel(image: "assets/images/1.png",name: "nada"),
-  TransactionModel(image: "assets/images/2.png",name: "Nouran"),
-  TransactionModel(image: "assets/images/3.png",name: "Lila"),
-  TransactionModel(image: "assets/images/4.png",name: "Emain"),
-  TransactionModel(image: "assets/images/5.png",name: "Yara"),
-  TransactionModel(image: "assets/images/6.png",name: "Tasneem"),
-];*/
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
@@ -69,17 +63,20 @@ class CustomAnimationContact extends StatelessWidget {
     index = number ~/ 60;
     return FadeInRight(
       delay: Duration(seconds: 1),
-      duration: Duration(milliseconds: (index * 100) + 500),
+      duration: Duration(milliseconds: (index * 100) + 400),
       child: GestureDetector(
         onTap: () {
-          // Navigator.push(context,
-          //   MaterialPageRoute(
-          //     builder: (context) => SendMoney(
-          //       name: _contacts[index]['name'],
-          //       avatar: _contacts[index]['avatar']
-          //     )
-          //   )
-          // );
+
+          Get.to(CustomSendMoneyContact());
+
+         /*  Navigator.push(context,
+             MaterialPageRoute(
+               builder: (context) => SendMoney(
+                 name: _contacts[index]['name'],
+                 avatar: _contacts[index]['avatar']
+               )
+             )
+           );*/
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
