@@ -22,7 +22,7 @@ class CustomListView extends StatelessWidget {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
     return Container(
-      height: MediaQuery.of(context).size.height - 200,
+      height: heightScreen*.5,
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
         itemCount: userContact.length,
@@ -30,7 +30,7 @@ class CustomListView extends StatelessWidget {
           return FadeInRight(
             duration: Duration(milliseconds: (index * 100) + 500),
             child: Container(
-              height: heightScreen*0.11,
+              height: heightScreen*0.1,
               margin: EdgeInsets.only(bottom: 20),
               padding: EdgeInsets.only(left: widthScreen*0.06),
               decoration: BoxDecoration(

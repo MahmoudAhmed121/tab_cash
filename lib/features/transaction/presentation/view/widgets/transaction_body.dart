@@ -24,13 +24,14 @@ class TransactionBody extends StatelessWidget {
     double widthScreen = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Padding(
           padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.05).copyWith(top:heightScreen*0.06 ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              Text("Transactions",style : GoogleFonts.josefinSans(textStyle: Style.textStyle24,color: kContainerColor),),
+              Text("Transactions",style : GoogleFonts.josefinSans(textStyle: Style.textStyle26,color: kContainerColor),),
               SizedBox(
                 height: 20,
               ),
