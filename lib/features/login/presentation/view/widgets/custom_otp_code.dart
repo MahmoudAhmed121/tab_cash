@@ -5,7 +5,7 @@ import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/features/home/presentation/view/home_view.dart';
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 import '../../../../../core/utils/style.dart';
-import '../../../../../core/widgets/appbar.dart';
+import '../../../../../core/widgets/custom_appbar.dart';
 import '../../../../bottom_bar/presentation/view/bottom_nav_bar.dart';
 import 'custom_build_pin_code_field.dart';
 import 'custom_buttom.dart';
@@ -24,7 +24,7 @@ class CustomOtpCode extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: appBar(context),
+      appBar: CustomAppBar(context),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(

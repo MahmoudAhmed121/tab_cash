@@ -6,7 +6,7 @@ import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/features/login/presentation/view/widgets/custom_otp_code.dart';
 
-import '../../../../../core/widgets/appbar.dart';
+import '../../../../../core/widgets/custom_appbar.dart';
 
 class SendCode extends StatefulWidget {
   const SendCode();
@@ -32,7 +32,7 @@ class _SendCodeState extends State<SendCode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context),
+      appBar: CustomAppBar(context),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Center(

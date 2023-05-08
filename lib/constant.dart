@@ -18,6 +18,12 @@ const kbackgroundbottomBar= Color(0xffDADADA);
 const ktextWoletColor= Color(0xff2C6280);
 const kTextChartColor= Color(0xff9B9B9B);
  const kDividertColor= Color(0xff444444);
+ const kReceiptColor= Color(0xffB3B3B5);
+ const kReceiptColor2= Color(0xff242C3B);
+ const kReceiptColor3= Color(0xffFAFAFA);
+ const kReceiptColor4= Color(0xff756D81);
+ const kReceiptColor5= Color(0xffE31010);
+
 // String token ="";
 
 

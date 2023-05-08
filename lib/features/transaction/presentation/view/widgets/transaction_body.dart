@@ -8,7 +8,7 @@ import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_co
 import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_contact_widgets.dart';
 
 import '../../../../../constant.dart';
-import '../../../../../core/widgets/appbar.dart';
+import '../../../../../core/widgets/custom_appbar.dart';
 import '../../../../home/presentation/view/widgets/custom_Appbar_home.dart';
 import '../../../data/model/transaction_model.dart';
 import 'custom_listView_contacts.dart';
@@ -26,17 +26,21 @@ class TransactionBody extends StatelessWidget {
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.05).copyWith(top: heightScreen * 0.06),
+          padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.05).copyWith(top: heightScreen * 0.07),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Transactions",
-                style: GoogleFonts.josefinSans(
-                    textStyle: Style.textStyle26, color: kContainerColor),
+              SizedBox(
+                width: widthScreen,
+                child: Text(
+                  "Transactions",
+                  style: GoogleFonts.josefinSans(
+                      textStyle: Style.textStyle26, color: kContainerColor),
+                  textAlign: TextAlign.center,
+                ),
               ),
               SizedBox(
-                height: heightScreen*0.01,
+                height: heightScreen*0.02,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,20 +76,19 @@ class TransactionBody extends StatelessWidget {
               FadeInRight(
                 duration: Duration(milliseconds: 500),
                 child: Padding(
-                  padding: EdgeInsets.only(
-                      bottom: heightScreen * 0.01, top: heightScreen * 0.02),
+                  padding: EdgeInsets.symmetric(horizontal: widthScreen*0.03).copyWith(bottom: heightScreen * 0.01, top: heightScreen * 0.02),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "All Contact",
                         style: GoogleFonts.prompt(
-                            textStyle: Style.textStyle16,
+                            textStyle: Style.textStyle14,
                             color: kPinInActiveBorder,
                             fontWeight: FontWeight.w400),
                       ),
                       Text(
-                        "See All  ",
+                        "See All",
                         style: GoogleFonts.prompt(
                             textStyle: Style.textStyle12,
                             color: kPinActiveBorder,

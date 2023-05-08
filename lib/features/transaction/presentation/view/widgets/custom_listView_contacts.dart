@@ -19,7 +19,9 @@ class CustomListView extends StatelessWidget {
         itemCount: userContact.length,
         itemBuilder: (context, index) {
           return FadeInRight(
-            duration: Duration(milliseconds: (index * 100) + 500),
+            animate: true,
+            delay: Duration(milliseconds: (index * 100) + 50),
+            duration: Duration(milliseconds: (index * 100) + 400),
             child: Container(
               height: heightScreen*0.1,
               margin: EdgeInsets.only(bottom: 20),
@@ -40,7 +42,7 @@ class CustomListView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: widthScreen*0.03,
                       ),
                       Text(
                         "${userContact[index].name}",
@@ -53,7 +55,7 @@ class CustomListView extends StatelessWidget {
                     icon: Icon(
                       Icons.arrow_forward_ios,
                       color: kContainerColor,
-                      size: 15,
+                      size: 16,
                     ),
                     onPressed: () {},
                   ),
