@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:focused_menu/focused_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../constant.dart';
@@ -22,7 +23,7 @@ class CustomAppbarHome extends StatelessWidget {
   final String image;
   final String title;
   final Icon? icon1;
-   final Icon? icon2;
+   final FocusedMenuHolder? icon2;
   final VoidCallback? onPressedIconOne;
   final VoidCallback? onPressedIconTwo;
   final String? textRight;

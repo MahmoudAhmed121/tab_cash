@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/assets.dart';
 import 'package:tab_cach/core/utils/style.dart';
+import 'package:tab_cach/core/widgets/bar_menu_widgets.dart';
 import 'package:tab_cach/features/home/presentation/manager/cubit/statistics_cubit.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/bar_chart_widgets.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_Appbar_home.dart';
@@ -16,7 +17,7 @@ import 'custom_income_expense_chart.dart';
 
 class HomeBody extends StatelessWidget {
   HomeBody({super.key});
-
+ 
   final String dropdownButton = "Month";
   @override
   Widget build(BuildContext context) {
@@ -37,9 +38,11 @@ class HomeBody extends StatelessWidget {
               image: Images.person,
               title: "Hi Mohamed",
               icon1: Icon(Icons.notifications_none),
-              icon2: Icon(Icons.menu),
+              icon2: barMenu(context),
               onPressedIconOne: () {},
-              onPressedIconTwo: () {},
+              onPressedIconTwo: () {
+              
+              },
             ),
             SizedBox(
               height: heightScreen * 0.05,
@@ -58,27 +61,23 @@ class HomeBody extends StatelessWidget {
             ),
 
             BlocConsumer<StatisticsCubit, StatisticsState>(
-              listener: (context, state) {
-                if(state is StatisticsFailure){
-                    CacheHelber.removeData(key: "token");
-                  Get.to(LoginView());
-                
-                }
-              },
-              builder: (context, state) {
-                if (state is StatisticsSuccess) {
-                  return Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
-                    child: SizedBox(
-                      height: heightScreen * 0.25,
-                      child: BarChartSample2(),
-                    ),
-                  );
-                }
-                 return Center(child: CircularProgressIndicator());
-              } 
-            ),
+                listener: (context, state) {
+              if (state is StatisticsFailure) {
+                CacheHelber.removeData(key: "token");
+                Get.to(LoginView());
+              }
+            }, builder: (context, state) {
+              if (state is StatisticsSuccess) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
+                  child: SizedBox(
+                    height: heightScreen * 0.25,
+                    child: BarChartSample2(),
+                  ),
+                );
+              }
+              return Center(child: CircularProgressIndicator());
+            }),
 
             SizedBox(
               height: heightScreen * 0.005,
@@ -129,4 +128,6 @@ class HomeBody extends StatelessWidget {
       ),
     );
   }
+
+ 
 }
