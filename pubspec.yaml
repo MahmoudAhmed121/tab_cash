@@ -28,29 +28,29 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  align_positioned: ^3.0.0
   animate_do: ^3.0.2
+  conditional_builder_null_safety: ^0.0.6
   cupertino_icons: ^1.0.2
-  iconsax: ^0.0.8
+  dartz: ^0.10.1
   dio: ^4.0.6
+  firebase_auth: ^4.5.0
+  firebase_core: ^2.11.0
   fl_chart: ^0.62.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.2
   flutter_font_icons: ^2.2.5
-  conditional_builder_null_safety: ^0.0.6
   flutter_svg: ^2.0.5
   get: ^4.6.5
   google_fonts: ^4.0.4
+  iconsax: ^0.0.8
   local_auth: ^2.1.6
   lottie: ^2.3.2
   persistent_bottom_nav_bar: ^5.0.2
+  pin_code_fields: ^7.4.0
   shared_preferences: ^2.1.0
   smooth_page_indicator: ^1.0.1
-  flutter_bloc: ^8.1.2
-  firebase_core: ^2.11.0
-  firebase_auth: ^4.5.0
-  pin_code_fields: ^7.4.0
-  align_positioned: ^3.0.0
-  
 
 dev_dependencies:
   flutter_test:
