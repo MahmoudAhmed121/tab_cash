@@ -31,12 +31,12 @@ class TransactionCubit extends Cubit<TransactionState> {
       emit(TransactionSuccess());
     } on DioError catch (e) {
 
-      if (e.response!.statusCode == 400) {
+      if (e.response!.statusCode == 400) {// مفيش رصيد
         emit(TransactionExiption("gamed"));
       }
-      if (e.response!.statusCode == 401) {
+      if (e.response!.statusCode == 401) {// token
         emit(TransactionFailure("This number is not registered"));
-      }
+      }// 404 not found
     }
   }
 }
