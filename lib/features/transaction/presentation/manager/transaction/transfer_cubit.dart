@@ -2,15 +2,17 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:tab_cach/core/utils/shared/cache_helber.dart';
-part 'transaction_state.dart';
+
+import '../../../data/model/transactionSuccess.dart';
+part 'transfer_state.dart';
 
 class TransactionCubit extends Cubit<TransactionState> {
   TransactionCubit() : super(TransactionInitial());
 
   static TransactionCubit get(context) => BlocProvider.of(context);
 
-  
   Future<void> sendMoney({required String user, required String money}) async {
+    TranseferSucessModel transeferSucessModel;
     final token = await CacheHelber.getData(key: "token");
     try {
       emit(TransactionLoading());
@@ -27,16 +29,18 @@ class TransactionCubit extends Cubit<TransactionState> {
           "amount": money,
         },
       );
-
-      emit(TransactionSuccess());
+final transeferSucessModel =TranseferSucessModel.fromJson(response.data);
+      emit(TransactionSuccess(transeferSucessModel ));
     } on DioError catch (e) {
-
-      if (e.response!.statusCode == 400) {// مفيش رصيد
-        emit(TransactionExiption("gamed"));
+      if (e.response!.statusCode == 400) {
+        emit(TransactionExiption("There is not enough balance in your wallet"));
       }
-      if (e.response!.statusCode == 401) {// token
-        emit(TransactionFailure("This number is not registered"));
-      }// 404 not found
+      if (e.response!.statusCode == 401) {
+        emit(TransactionFailure("You should login"));
+      }
+      if (e.response!.statusCode == 404) {
+        emit(TransactionNotFound(e.response!.data["error"]));//
+      }
     }
   }
 }

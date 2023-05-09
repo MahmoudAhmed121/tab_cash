@@ -7,7 +7,7 @@ import '../../../../../constant.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../data/model/transaction_model.dart';
-import '../../manager/transaction/transaction_cubit.dart';
+import '../../manager/transaction/transfer_cubit.dart';
 
 class CustomListView extends StatelessWidget {
   CustomListView({super.key});

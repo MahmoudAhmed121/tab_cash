@@ -8,19 +8,24 @@ import 'package:tab_cach/features/history/data/repo/histoty_repo.dart';
 
 class HisterRepoImpl implements HistoryRepo {
   @override
-  Future<Either<ServerFailure, HistoryModel>> getHistoryData() async {
+  Future<Either<ServerFailure, List<HistoryModel>>> getHistoryData() async {
     HistoryModel historyModel;
     try {
       final token = await CacheHelber.getData(key: "token");
       final response = await Dio(
         BaseOptions(
           headers: {"Authorization": "Bearer ${token}"},
+
         ),
       ).get(
           "https://tabcash-backend.nourmohamed.com/wallet/api/transaction-list/");
-      final data = HistoryModel.fromJson(response.data);
-      return right(data);
+
+          List<dynamic> responseData =response.data;
+          List<HistoryModel> dataList =responseData.map((jsounDecode) => HistoryModel.fromJson(jsounDecode)).toList();
+     
+      return right(dataList);
     } on DioError catch (e) {
+     
       return left(ServerFailure.fromDioError(e));
     }
   }

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/core/utils/shared/cache_helber.dart';
 import 'package:tab_cach/features/login/presentation/view/login_view.dart';
-import 'package:tab_cach/features/transaction/presentation/manager/transaction/transaction_cubit.dart';
+import 'package:tab_cach/features/transaction/presentation/manager/transaction/transfer_cubit.dart';
 import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_receipt.dart';
 
 import '../../../../../constant.dart';
@@ -15,39 +15,54 @@ import 'custom_text_money_field.dart';
 
 class CustomSendMoneyContact extends StatelessWidget {
   CustomSendMoneyContact(
-       {Key? key, required this.image, required this.name, required this.phone})
+      {Key? key, required this.image, required this.name, required this.phone})
       : super(key: key);
   final String image;
   final String? name;
   final String phone;
+
   final GlobalKey<FormState> _key = GlobalKey();
   TextEditingController textEditingController = TextEditingController();
-    TextEditingController phoneEditingController = TextEditingController();
+  TextEditingController phoneEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
     return BlocConsumer<TransactionCubit, TransactionState>(
       listener: (context, state) {
         if (state is TransactionSuccess) {
-          
-          Get.to(CustomReceipt());
+
+          final amount =state.transeferSucessModel.amount;
+          final number = state.transeferSucessModel.number;
+          final dateCreated =state.transeferSucessModel.dateCreated;
+          Get.to(CustomReceipt(amount:amount ,dateTime:dateCreated ,number: number,name:name ,image:image,));
         }
         if (state is TransactionFailure) {
-           
           CacheHelber.removeData(key: "token");
           Get.to(LoginView());
         }
-        if(state is TransactionExiption){
+        if (state is TransactionExiption) {
           Get.snackbar(
-              "Message",
-              "",
-              backgroundColor: Colors.grey,
-              messageText: Text(
-                "${state.exption}",
-                style: TextStyle(color: Colors.white),
-              ),
-            );  
+            "Message",
+            "",
+            backgroundColor: Colors.grey,
+            messageText: Text(
+              "${state.exption}",
+              style: TextStyle(color: Colors.white),
+            ),
+          );
+        }if (state is TransactionNotFound) {
+          Get.snackbar(
+            "Message",
+            "",
+            backgroundColor: Colors.grey,
+            messageText: Text(
+              "${state.errorMessage}",
+              style: TextStyle(color: Colors.white),
+            ),
+          );
+
         }
       },
       builder: (context, state) {
@@ -103,14 +118,7 @@ class CustomSendMoneyContact extends StatelessWidget {
                       SizedBox(
                         height: heightScreen * 0.08,
                       ),
-   CustomTextMoneyField(
-                          textEditingController: phoneEditingController,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "You cloud inter a money";
-                            }
-                            return null;
-                          }),
+
 
                       CustomTextMoneyField(
                           textEditingController: textEditingController,
@@ -120,7 +128,6 @@ class CustomSendMoneyContact extends StatelessWidget {
                             }
                             return null;
                           }),
-
 
                       SizedBox(
                         height: heightScreen * 0.1,
@@ -134,8 +141,12 @@ class CustomSendMoneyContact extends StatelessWidget {
                             return ElevatedButton(
                               onPressed: () {
                                 if (_key.currentState!.validate()) {
-                               TransactionCubit.get(context).sendMoney(user: textEditingController.text, money: phoneEditingController.text);
+                                  BlocProvider.of<TransactionCubit>(context)
+                                      .sendMoney(
+                                          user: textEditingController.text,
+                                          money: phone);
                                 }
+
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: kPinInActiveField,

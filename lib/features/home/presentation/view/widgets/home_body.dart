@@ -12,6 +12,7 @@ import 'package:tab_cach/features/home/presentation/view/widgets/custom_Appbar_h
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_income_expense_widget.dart';
 import 'package:tab_cach/features/login/presentation/view/login_view.dart';
 import '../../../../../core/utils/shared/cache_helber.dart';
+import '../../manager/balance/balance_cubit.dart';
 import 'custom_board_money.dart';
 import 'custom_income_expense_chart.dart';
 
@@ -44,10 +45,19 @@ class HomeBody extends StatelessWidget {
             SizedBox(
               height: heightScreen * 0.05,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
-              child: CustomBoardMoney(),
-            ),
+           BlocConsumer<BalanceCubit, BalanceState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            if (state is BalanceSuccess) {
+              final balace =state.balanceModel.balance;
+              return Padding(
+                padding:
+                EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
+                child: CustomBoardMoney(balance: balace),
+              );
+            }
+               return CircularProgressIndicator();
+            }),
             SizedBox(
               height: heightScreen * 0.06,
             ),
@@ -73,7 +83,11 @@ class HomeBody extends StatelessWidget {
                   ),
                 );
               }
-              return Center(child: CircularProgressIndicator());
+              if(state is StatisticsFailure){
+                print(state.erorrMessage);
+
+              }
+              return Center(child: SizedBox());
             }),
 
             SizedBox(

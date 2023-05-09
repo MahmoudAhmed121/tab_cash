@@ -8,7 +8,7 @@ class CustomProcess extends StatelessWidget {
   const CustomProcess({Key? key, required this.title, required this.date, required this.time, required this.money}) : super(key: key);
   final String title;
   final String date ;
-  final String time ;
+  final DateTime time ;
   final String money;
 
 
@@ -54,7 +54,7 @@ class CustomProcess extends StatelessWidget {
                 child: Text(
                   "$time",
                   style: GoogleFonts.josefinSans(
-                      textStyle: Style.textStyle16,
+                      textStyle: Style.textStyle10,
                       color: kbackgroundbottomBar,
                       fontWeight: FontWeight.w400),
                 ),

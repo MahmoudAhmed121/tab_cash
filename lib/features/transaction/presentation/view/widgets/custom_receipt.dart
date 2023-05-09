@@ -12,8 +12,12 @@ import '../../../../bottom_bar/presentation/view/bottom_nav_bar.dart';
 import 'custom_row_receipt.dart';
 
 class CustomReceipt extends StatelessWidget {
-  const CustomReceipt({Key? key}) : super(key: key);
-
+  const CustomReceipt({Key? key, required this.dateTime, required this.number, required this.amount, required this.image, required this.name}) : super(key: key);
+final DateTime dateTime;
+final String number;
+final String amount;
+final String image;
+final String? name;
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
@@ -57,7 +61,7 @@ class CustomReceipt extends StatelessWidget {
                   Divider(thickness: 1,color: kPinInActiveField,),
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.04),
-                    child: CustomRowReceipt(textOne:"Transfer Amount" ,textTwo:"\$150" ,),
+                    child: CustomRowReceipt(textOne:"Transfer Amount" ,textTwo:"\$ ${number}" ,),
                   ),
 
                   Container(
@@ -78,22 +82,22 @@ class CustomReceipt extends StatelessWidget {
                           width: widthScreen * 0.1,
                           padding: EdgeInsets.only(right: widthScreen*0.02),
                           child: CircleAvatar(
-                            backgroundImage: AssetImage("assets/images/4.png"),
+                            backgroundImage: AssetImage(image),
                           ),
                         ),
-                        Text("Sara Hisham",style: Style.textStyle12.copyWith(color:kReceiptColor2,fontWeight: FontWeight.w600 )),
+                        Text(name!,style: Style.textStyle12.copyWith(color:kReceiptColor2,fontWeight: FontWeight.w600 )),
                       ],
                     ),
                   ),
 
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.04),
-                    child: CustomRowReceipt(textOne:"Data & time" ,textTwo:"\$19 April 2023, 09:50PM" ,),
+                    child: CustomRowReceipt(textOne:"Data & time" ,textTwo:"$dateTime" ,),
                   ),
                   SizedBox(height: heightScreen*0.021,),
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.04),
-                    child: CustomRowReceipt(textOne:"No. Ref" ,textTwo:"\$No. Ref" ,),
+                    child: CustomRowReceipt(textOne:"No. Ref" ,textTwo:"$amount",),
 
                   ),
                   SizedBox(height: heightScreen*0.025,),

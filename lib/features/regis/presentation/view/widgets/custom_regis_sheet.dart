@@ -10,6 +10,9 @@ import 'package:tab_cach/features/login/presentation/view/widgets/custom_buttom.
 import 'package:tab_cach/features/regis/presentation/manager/regis/regis_cubit.dart';
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 
+import '../../../../login/presentation/view/widgets/custom_otp_code.dart';
+import '../../manager/phone_auth/phone_auth_cubit.dart';
+
 class CustomRegisSheet extends StatefulWidget {
   CustomRegisSheet({
     required this.text,
@@ -28,6 +31,47 @@ class _CustomRegisSheetState extends State<CustomRegisSheet> {
       TextEditingController();
 
   final GlobalKey<FormState> _key = GlobalKey();
+
+  final GlobalKey<FormState> _phoneFormKey = GlobalKey();
+  String phoneNumber =' ';
+
+  Future<void> _register (BuildContext context) async{
+    if(!_phoneFormKey.currentState!.validate()){
+      Navigator.pop(context);
+      return;
+    }else{
+      Navigator.pop(context);
+      _phoneFormKey.currentState!.save();
+      BlocProvider.of<PhoneAuthCubit>(context).submitPhoneNumber(phoneNumber);
+    }
+  }
+
+  Widget _buildPhoneNumberSubmittedBloc (){
+    return BlocListener<PhoneAuthCubit,PhoneAuthState>(
+      listenWhen: (previous , current){
+        return previous != current ;
+      },
+
+      listener: (context ,state){
+        if(state is Loading){ CircularProgressIndicator(); }
+
+        if(state is PhoneNumberSubmitted){
+          Navigator.pop(context);
+
+         // Navigator.of(context).pushNamed(otpScreen , arguments: phoneNumber);
+          Get.to(CustomOtpCode(),arguments: phoneNumber);
+        }
+        if(state is ErrorOccurred){
+          Navigator.pop(context);
+          String errorMsg = (state).errorMsg;
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(errorMsg),backgroundColor: Colors.black,duration: Duration(seconds: 3),));
+        }
+      },
+
+      child: Container(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,14 +160,16 @@ class _CustomRegisSheetState extends State<CustomRegisSheet> {
                       child: CustomTextFormFaild(
                         hintText: "Phone Number",
                         obscureText: false,
-                        validator: (textTwo) {
-                          return null;
-                        
-                        //  if (textTwo!.isEmpty) {
-                        //     return "you should Inter Valid Phone Number";
-                        //   }else if (textTwo.length < 11) {
-                        //     return "your Password is weak";
-                        //   }
+                        validator: (value){
+                          if(value!.isEmpty){
+                            return 'please enter your phone number !' ;
+                          }else if (value.length <11){
+                            return 'too short for a phone number !';
+                          }
+                          return null ;
+                        },
+                        onSaved: (value){
+                          phoneNumber = value! ;
                         },
                         textEditingController: phoneEditingController,
                         textInputType: TextInputType.phone,
@@ -155,13 +201,15 @@ class _CustomRegisSheetState extends State<CustomRegisSheet> {
                       ),
                     ),
                     SizedBox(
-                      height: heightScreen * 0.12,
+                      height: heightScreen * 0.06,
                     ),
                     ConditionalBuilder(
                       condition: state is! RegisLoading,
                       builder: (context) {
                         return CustomButton(
                           onPressed: () {
+                            CircularProgressIndicator();
+                            _register(context);
                             if (_key.currentState!.validate()) {
                               RegisCubit.get(context).sendData(
                                   fullName: NameEditingController.text,
@@ -177,7 +225,8 @@ class _CustomRegisSheetState extends State<CustomRegisSheet> {
                           child: CircularProgressIndicator(),
                         );
                       },
-                    )
+                    ),
+                    _buildPhoneNumberSubmittedBloc(),
                   ],
                 ),
               ),
