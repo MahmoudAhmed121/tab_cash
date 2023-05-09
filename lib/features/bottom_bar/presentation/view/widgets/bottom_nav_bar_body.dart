@@ -6,7 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tab_cach/features/children/presentation/view/children_view.dart';
 import 'package:tab_cach/constant.dart';
-import 'package:tab_cach/features/history/presentation/view/historyview.dart';
+import 'package:tab_cach/features/history/presentation/view/history_view.dart';
 import '../../../../home/presentation/view/home_view.dart';
 import '../../../../payments/presentation/view/payments_view.dart';
 import '../../../../transaction/presentation/view/widgets/transaction_view.dart';
