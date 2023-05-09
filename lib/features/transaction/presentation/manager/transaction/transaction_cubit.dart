@@ -9,7 +9,6 @@ class TransactionCubit extends Cubit<TransactionState> {
 
   static TransactionCubit get(context) => BlocProvider.of(context);
 
-  
   Future<void> sendMoney({required String user, required String money}) async {
     final token = await CacheHelber.getData(key: "token");
     try {
@@ -30,13 +29,15 @@ class TransactionCubit extends Cubit<TransactionState> {
 
       emit(TransactionSuccess());
     } on DioError catch (e) {
-
-      if (e.response!.statusCode == 400) {// مفيش رصيد
-        emit(TransactionExiption("gamed"));
+      if (e.response!.statusCode == 400) {
+        emit(TransactionExiption("There is not enough balance in your wallet"));
       }
-      if (e.response!.statusCode == 401) {// token
-        emit(TransactionFailure("This number is not registered"));
-      }// 404 not found
+      if (e.response!.statusCode == 401) {
+        emit(TransactionFailure("You should login"));
+      }
+      if (e.response!.statusCode == 404) {
+        emit(TransactionNotFound(e.response!.data["error"]));
+      }
     }
   }
 }

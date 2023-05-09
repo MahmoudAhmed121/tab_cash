@@ -8,7 +8,7 @@ class CustomProcess extends StatelessWidget {
   const CustomProcess({Key? key, required this.title, required this.date, required this.time, required this.money}) : super(key: key);
   final String title;
   final String date ;
-  final String time ;
+  final DateTime time ;
   final String money;
 
 

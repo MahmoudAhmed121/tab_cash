@@ -13,7 +13,9 @@ class CustomListOfHistoryChildren extends StatelessWidget {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
 
-    return Container(
+    return SizedBox();
+
+    /*return Container(
       height: heightScreen*0.8,
       width: widthScreen,
       padding: EdgeInsets.symmetric(horizontal: widthScreen*0.05).copyWith(top: heightScreen*0.04),
@@ -31,6 +33,6 @@ class CustomListOfHistoryChildren extends StatelessWidget {
             );
           }
       ),
-    );
+    );*/
   }
 }

@@ -11,6 +11,7 @@ class RegisBody extends StatelessWidget {
   RegisBody({super.key});
 
   final SendCode sendCode = SendCode();
+
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
@@ -48,7 +49,9 @@ class RegisBody extends StatelessWidget {
                       ),
                       CustomRegisSheet(
                         text: "Sign Up",
-                      )
+                      ),
+
+
                     ],
                   ),
                 ),

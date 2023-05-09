@@ -1,4 +1,5 @@
 part of 'phone_auth_cubit.dart';
+
 @immutable
 abstract class PhoneAuthState {}
 

@@ -7,6 +7,7 @@ import 'package:tab_cach/features/home/presentation/view/widgets/custom_Appbar_h
 
 import '../../../../../constant.dart';
 import '../../../../../core/utils/style.dart';
+import 'custom_add_children.dart';
 
 class ChildrenBody extends StatelessWidget {
   const ChildrenBody({Key? key}) : super(key: key);
@@ -25,7 +26,9 @@ class ChildrenBody extends StatelessWidget {
               image: Images.person4,
               title: "Mohamed",
               icon1: Icon(Icons.add_box_outlined),
-              onPressedIconOne:(){},
+              onPressedIconOne:(){
+                showAlertDialog(context);
+              },
 
             ),
           ),

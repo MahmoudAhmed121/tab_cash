@@ -27,13 +27,68 @@ class CustomAddMoneyBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: heightScreen*0.13,),
-            Text(
-                "Card Number",
-                 style: GoogleFonts.prompt(
-                  textStyle: Style.textStyle18, color: kbackgroundbottomBar,fontWeight: FontWeight.w400),
+            SizedBox(height: heightScreen*0.08,),
+            CustomAddMoneyTextFields(
+              title: "Card Number",
+              hintText: "1234 1234 1234 1234",
+              heightField: heightScreen*0.07,
+              widthField: widthScreen*0.8,
             ),
-            CustomAddMoneyTextFields(),
+
+            SizedBox(height: heightScreen*0.06,),
+
+            Row(
+              children: [
+
+                CustomAddMoneyTextFields(
+                  title: "EXPIRATION",
+                  hintText: "MM/YY",
+                  heightField: heightScreen*0.07,
+                  widthField: widthScreen*0.5,
+                ),
+
+                SizedBox(width: widthScreen*0.06,),
+
+                CustomAddMoneyTextFields(
+                  title: "CVC",
+                  hintText: "CVC",
+                  heightField: heightScreen*0.07,
+                  widthField: widthScreen*0.23,
+                ),
+              ],
+            ),
+
+            SizedBox(height: heightScreen*0.075,),
+
+            CustomAddMoneyTextFields(
+              title: "Amount",
+              hintText: "\$0",
+              heightField: heightScreen*0.07,
+              widthField: widthScreen*0.8,
+            ),
+
+
+            Spacer(),
+
+            ElevatedButton(
+              onPressed: () {
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: kButtomBack,
+                fixedSize: Size(widthScreen * 0.8, heightScreen * 0.06),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+              child: Text('Sdd Money ',
+                style: GoogleFonts.inter( textStyle: Style.textStyle20, color: kContainerColor),
+              ),
+
+            ),
+
+
+            SizedBox(height: heightScreen*0.07,),
+
 
           ],
         ),
