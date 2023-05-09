@@ -23,6 +23,7 @@ const kTextChartColor= Color(0xff9B9B9B);
  const kReceiptColor3= Color(0xffFAFAFA);
  const kReceiptColor4= Color(0xff756D81);
  const kReceiptColor5= Color(0xffE31010);
+ const kPaymentContainerColor= Color(0xffF4F4F9);
 
 // String token ="";
 
