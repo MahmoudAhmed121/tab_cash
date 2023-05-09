@@ -32,7 +32,7 @@ class HomeBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: heightScreen * 0.08,
+              height: heightScreen * 0.07,
             ),
             CustomAppbarHome(
               image: Images.person,

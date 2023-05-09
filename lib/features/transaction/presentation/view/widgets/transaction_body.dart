@@ -26,7 +26,7 @@ class TransactionBody extends StatelessWidget {
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.05).copyWith(top: heightScreen * 0.06),
+          padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.05).copyWith(top: heightScreen * 0.07),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

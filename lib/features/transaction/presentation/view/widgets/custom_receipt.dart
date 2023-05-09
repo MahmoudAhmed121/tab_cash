@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tab_cach/core/widgets/custom_appbar.dart';
+import 'package:tab_cach/features/home/presentation/view/home_view.dart';
 import 'package:tab_cach/features/login/presentation/view/widgets/custom_buttom.dart';
 
 import '../../../../../constant.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../../bottom_bar/presentation/view/bottom_nav_bar.dart';
 import 'custom_row_receipt.dart';
 
 class CustomReceipt extends StatelessWidget {
@@ -126,7 +129,9 @@ class CustomReceipt extends StatelessWidget {
             SizedBox(height: heightScreen*0.05,),
 
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(BottomNavBarView(),);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: kButtomBack,
                 fixedSize: Size(widthScreen * 0.8, heightScreen * 0.06),
