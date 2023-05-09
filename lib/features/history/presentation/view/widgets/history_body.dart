@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tab_cach/core/widgets/custom_process.dart';
 
 import '../../../../../constant.dart';
 import '../../../../../core/utils/style.dart';
@@ -16,7 +15,8 @@ class HistoryBody extends StatelessWidget {
 
     return Scaffold(
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal:widthScreen*0.042).copyWith(top: heightScreen*0.07),
+        padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.042)
+            .copyWith(top: heightScreen * 0.07),
         child: Column(
           children: [
             Row(
@@ -38,11 +38,19 @@ class HistoryBody extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: heightScreen*0.05,),
-            CustomListOfHistory(),
-          ],
-        ),
-      ),
+            SizedBox(
+              height: heightScreen * 0.05,
+            ),
+            
+              
+                    CustomListOfHistory(),
+                
+          ]
+            ),
+        
+      
+        )
     );
+    
   }
 }

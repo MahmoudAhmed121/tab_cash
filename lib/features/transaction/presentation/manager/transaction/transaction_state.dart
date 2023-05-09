@@ -18,3 +18,9 @@ class TransactionFailure extends TransactionState {
   TransactionFailure(this.errorMessage);
 
 }
+class TransactionNotFound extends TransactionState {
+
+  final String errorMessage;
+
+  TransactionNotFound(this.errorMessage);
+}

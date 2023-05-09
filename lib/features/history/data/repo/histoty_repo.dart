@@ -4,5 +4,5 @@ import 'package:tab_cach/features/history/data/model/history_model.dart';
 
 abstract class HistoryRepo{
 
-  Future<Either<ServerFailure,HistoryModel>>getHistoryData();
+  Future<Either<ServerFailure,List<HistoryModel>>>getHistoryData();
 }

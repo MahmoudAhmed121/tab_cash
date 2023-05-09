@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
+import 'package:tab_cach/features/history/data/repo/history_repo_impl.dart';
+import 'package:tab_cach/features/history/presentation/manager/cubit/history_cubit.dart';
 import 'package:tab_cach/features/home/data/repo/home_repo_impl.dart';
 import 'package:tab_cach/features/home/presentation/manager/cubit/statistics_cubit.dart';
 import 'package:tab_cach/features/login/presentation/manager/phone_auth/phone_auth_cubit.dart';
@@ -30,7 +32,8 @@ class TabCach extends StatelessWidget {
         BlocProvider(
           create: (context) => StatisticsCubit(HomeRepoImpl())..getStatis(),
         ),
-        BlocProvider(create: (context) => TransactionCubit()..sendMoney(money: "",user: ""),)
+        BlocProvider(create: (context) => TransactionCubit()),
+        BlocProvider(create: (context) => HistoryCubit(HisterRepoImpl())..data(),)
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

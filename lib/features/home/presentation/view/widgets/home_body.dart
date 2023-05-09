@@ -76,7 +76,11 @@ class HomeBody extends StatelessWidget {
                   ),
                 );
               }
-              return Center(child: CircularProgressIndicator());
+              if(state is StatisticsFailure){
+                print(state.erorrMessage);
+
+              }
+              return Center(child: SizedBox());
             }),
 
             SizedBox(
