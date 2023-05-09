@@ -3,6 +3,7 @@
 import 'package:align_positioned/align_positioned.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:tab_cach/core/utils/assets.dart';
 import 'package:tab_cach/features/transaction/data/model/transaction_model.dart';
 import '../../../../../constant.dart';
 
@@ -12,28 +13,29 @@ class CustomAnimationContact extends StatelessWidget {
    CustomAnimationContact({super.key});
    final List<TransactionModel> userContact = [
     TransactionModel(
-        image: "assets/images/1.png",
+        image: Images.person1,
         name: "Nada Mohamed",
         phone: "01234567890"),
     TransactionModel(
-        image: "assets/images/2.png",
+        image: Images.person2,
         name: "Nouran Hosaam",
         phone: "01234543781"),
     TransactionModel(
-      image: "assets/images/3.png",
+      image: Images.person3,
       name: "Lila Ahmed",
       phone: "01257389467",
     ),
     TransactionModel(
-        image: "assets/images/4.png",
+        image:Images.person4,
         name: "Emain Sayed",
         phone: "01297463784"),
     TransactionModel(
-        image: "assets/images/5.png",
+        image: Images.person5
+        ,
         name: "Yara Mahmoud",
         phone: "01236748963"),
     TransactionModel(
-        image: "assets/images/6.png",
+        image: Images.person6,
         name: "Tasneem Ziad",
         phone: "01287463829"),
   ];

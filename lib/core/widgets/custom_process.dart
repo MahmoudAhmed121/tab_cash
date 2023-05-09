@@ -44,7 +44,7 @@ class CustomProcess extends StatelessWidget {
                 child: Text(
                   "$date",
                   style: GoogleFonts.josefinSans(
-                      textStyle: Style.textStyle18,
+                      textStyle: Style.textStyle16,
                       color: kbackgroundbottomBar,
                       fontWeight: FontWeight.w400),
                 ),
@@ -54,7 +54,7 @@ class CustomProcess extends StatelessWidget {
                 child: Text(
                   "$time",
                   style: GoogleFonts.josefinSans(
-                      textStyle: Style.textStyle18,
+                      textStyle: Style.textStyle16,
                       color: kbackgroundbottomBar,
                       fontWeight: FontWeight.w400),
                 ),
@@ -64,7 +64,7 @@ class CustomProcess extends StatelessWidget {
           Text(
             "\$$money",
             style: GoogleFonts.josefinSans(
-                textStyle: Style.textStyle26,
+                textStyle: Style.textStyle24,
                 color: kbackgroundbottomBar,
                 fontWeight: FontWeight.w500),
           ),

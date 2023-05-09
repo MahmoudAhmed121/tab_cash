@@ -35,7 +35,7 @@ class HomeBody extends StatelessWidget {
               height: heightScreen * 0.07,
             ),
             CustomAppbarHome(
-              image: Images.person,
+              image: Images.person4,
               title: "Hi Mohamed",
               icon1: Icon(Icons.notifications_none),
               icon2: barMenu(context),
