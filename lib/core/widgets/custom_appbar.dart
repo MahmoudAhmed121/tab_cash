@@ -30,7 +30,7 @@ AppBar CustomAppBar(context,{String? title , TextStyle? textStyle}) {
               ),
             ),
           ),
-          Text("$title",style:textStyle,),
+          (title != null )?Text("$title",style:textStyle,):SizedBox(),
         ],
       ),
       backgroundColor: kBackGroundColor,

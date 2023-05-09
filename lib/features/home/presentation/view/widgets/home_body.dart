@@ -40,9 +40,6 @@ class HomeBody extends StatelessWidget {
               icon1: Icon(Icons.notifications_none),
               icon2: barMenu(context),
               onPressedIconOne: () {},
-              onPressedIconTwo: () {
-              
-              },
             ),
             SizedBox(
               height: heightScreen * 0.05,
