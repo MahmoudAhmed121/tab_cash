@@ -50,7 +50,6 @@ dependencies:
   lottie: ^2.3.2
   persistent_bottom_nav_bar: ^5.0.2
   pin_code_fields: ^7.4.0
-  screen_utils: ^0.0.1
   shared_preferences: ^2.1.0
   smooth_page_indicator: ^1.0.1
 

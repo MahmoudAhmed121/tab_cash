@@ -6,6 +6,11 @@ abstract class TransactionState {}
 class TransactionInitial extends TransactionState {}
 class TransactionLoading extends TransactionState {}
 class TransactionSuccess extends TransactionState {}
+class TransactionExiption extends TransactionState {
+  final String exption;
+
+  TransactionExiption(this.exption);
+}
 class TransactionFailure extends TransactionState {
 
   final String errorMessage;

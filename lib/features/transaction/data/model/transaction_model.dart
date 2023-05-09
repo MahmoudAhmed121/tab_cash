@@ -1,5 +1,6 @@
 class TransactionModel {
   final String image;
   final String? name;
-  TransactionModel({required this.image, this.name});
+  final String phone ;
+  TransactionModel( {required this.image,required this.name,required this.phone,});
 }

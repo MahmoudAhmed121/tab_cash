@@ -7,6 +7,7 @@ import 'package:tab_cach/features/home/data/repo/home_repo_impl.dart';
 import 'package:tab_cach/features/home/presentation/manager/cubit/statistics_cubit.dart';
 import 'package:tab_cach/features/login/presentation/manager/phone_auth/phone_auth_cubit.dart';
 import 'package:tab_cach/features/splach/presentation/view/splach_view.dart';
+import 'package:tab_cach/features/transaction/presentation/manager/transaction/transaction_cubit.dart';
 import 'features/onbarding/presentation/view/manager/onboarding_boc/page_view_indicator_bloc.dart';
 
 void main() {
@@ -28,7 +29,8 @@ class TabCach extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => StatisticsCubit(HomeRepoImpl())..getStatis(),
-        )
+        ),
+        BlocProvider(create: (context) => TransactionCubit()..sendMoney(money: "",user: ""),)
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
