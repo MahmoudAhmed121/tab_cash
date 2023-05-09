@@ -16,6 +16,14 @@ class Images {
   static const payment7 = "assets/images/payment/payment7.svg";
   static const payment8 = "assets/images/payment/payment8.svg";
 
+  static const person1 = "assets/images/persons/person1.png";
+  static const person2 = "assets/images/persons/person2.png";
+  static const person3 = "assets/images/persons/person3.png";
+  static const person4 = "assets/images/persons/person4.png";
+  static const person5 = "assets/images/persons/person5.png";
+  static const person6 = "assets/images/persons/person6.png";
+  static const person7 = "assets/images/persons/person7.png";
+
 
 
 

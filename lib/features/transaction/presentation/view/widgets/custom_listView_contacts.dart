@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_send_money_contact.dart';
 import '../../../../../constant.dart';
+import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../data/model/transaction_model.dart';
 import '../../manager/transaction/transaction_cubit.dart';
@@ -11,31 +12,32 @@ import '../../manager/transaction/transaction_cubit.dart';
 class CustomListView extends StatelessWidget {
   CustomListView({super.key});
 final List<TransactionModel> userContact = [
-    TransactionModel(
-        image: "assets/images/1.png",
-        name: "Nada Mohamed",
-        phone: "01234567890"),
-    TransactionModel(
-        image: "assets/images/2.png",
-        name: "Nouran Hosaam",
-        phone: "01234543781"),
-    TransactionModel(
-      image: "assets/images/3.png",
-      name: "Lila Ahmed",
-      phone: "01257389467",
-    ),
-    TransactionModel(
-        image: "assets/images/4.png",
-        name: "Emain Sayed",
-        phone: "01297463784"),
-    TransactionModel(
-        image: "assets/images/5.png",
-        name: "Yara Mahmoud",
-        phone: "01236748963"),
-    TransactionModel(
-        image: "assets/images/6.png",
-        name: "Tasneem Ziad",
-        phone: "01287463829"),
+  TransactionModel(
+      image: Images.person6,
+      name: "Nada Mohamed",
+      phone: "01234567890"),
+  TransactionModel(
+      image: Images.person5,
+      name: "Nouran Hosaam",
+      phone: "01234543781"),
+  TransactionModel(
+    image: Images.person3,
+    name: "Lila Ahmed",
+    phone: "01257389467",
+  ),
+  TransactionModel(
+      image:Images.person4,
+      name: "Emain Sayed",
+      phone: "01297463784"),
+  TransactionModel(
+      image: Images.person3
+      ,
+      name: "Yara Mahmoud",
+      phone: "01236748963"),
+  TransactionModel(
+      image: Images.person2,
+      name: "Tasneem Ziad",
+      phone: "01287463829"),
   ];
   @override
   Widget build(BuildContext context) {
