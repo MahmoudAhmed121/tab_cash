@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
+import 'package:get/get.dart';
 import 'package:tab_cach/constant.dart';
-
-const double padding = 40;
+import 'package:tab_cach/features/home/presentation/view/widgets/custom_add_money.dart';
 
 FocusedMenuHolder barMenu(BuildContext context) {
+  double heightScreen = MediaQuery.of(context).size.height;
+  double widthScreen = MediaQuery.of(context).size.width;
+
   return FocusedMenuHolder(
-      menuWidth: MediaQuery.of(context).size.width - padding * 2,
+      menuWidth: widthScreen*0.6,
+      blurSize: 1,
       menuItems: [
         FocusedMenuItem(
             title: Row(children: [Image.asset("assets/images/profile.png"),SizedBox(width: 16,),Text('profile'),]),
@@ -21,8 +25,9 @@ FocusedMenuHolder barMenu(BuildContext context) {
         FocusedMenuItem(
             title: Row(children: [Image.asset("assets/images/add mone.png"),SizedBox(width: 16,),Text('add money')]),
             trailingIcon: Icon(Icons.arrow_forward_ios_rounded, color: kBackGroundColor,size: 14),
-            
-            onPressed: () {}),
+            onPressed: () {
+              Get.to(CustomAddMoneyBody());
+            }),
         FocusedMenuItem(
             title: Row(children: [Image.asset("assets/images/setting.png"),SizedBox(width: 16,),Text('settings'),]),
 
@@ -33,8 +38,10 @@ FocusedMenuHolder barMenu(BuildContext context) {
       blurBackgroundColor: Colors.blueGrey[900],
       menuOffset: 20,
       openWithTap: true,
-      duration: Duration(seconds: 0),
-      animateMenuItems: false,
-      onPressed: () {},
-      child: Icon(Icons.menu));
+      duration: Duration(milliseconds: 200),
+      animateMenuItems: true,
+      onPressed: () {
+      },
+
+      child: Icon(Icons.menu,color: kContainerColor,));
 }
