@@ -111,14 +111,14 @@ class CustomSendMoneyContact extends StatelessWidget {
                       SizedBox(
                         height: heightScreen * 0.08,
                       ),
-                      CustomTextMoneyField(
-                          textEditingController: phoneEditingController,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "You cloud inter a money";
-                            }
-                            return null;
-                          }),
+                      // CustomTextMoneyField(
+                      //     textEditingController: phoneEditingController,
+                      //     validator: (value) {
+                      //       if (value!.isEmpty) {
+                      //         return "You cloud inter a money";
+                      //       }
+                      //       return null;
+                      //     }),
 
                       CustomTextMoneyField(
                           textEditingController: textEditingController,
@@ -143,8 +143,9 @@ class CustomSendMoneyContact extends StatelessWidget {
                                 if (_key.currentState!.validate()) {
                                   BlocProvider.of<TransactionCubit>(context)
                                       .sendMoney(
-                                          user: textEditingController.text,
-                                          money: phoneEditingController.text);
+                                          user: phone,
+                                          money: phoneEditingController.text
+                                          );
                                 }
                               },
                               style: ElevatedButton.styleFrom(

@@ -4,8 +4,8 @@ import 'package:tab_cach/core/utils/style.dart';
 import '../../../../../constant.dart';
 
 class CustomBoardMoney extends StatelessWidget {
-  const CustomBoardMoney({Key? key}) : super(key: key);
-
+  const CustomBoardMoney({Key? key, required this.balance}) : super(key: key);
+final double balance ;
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
@@ -27,7 +27,7 @@ class CustomBoardMoney extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Balance" , style: Style.textStyle16.copyWith(color: kPinActiveBorder),),
-          Text("\$ 945,423",style:Style.textStyle30.copyWith(color: ktextWoletColor),),
+          Text("$balance",style:Style.textStyle30.copyWith(color: ktextWoletColor),),
           Text("012 435 768 231",style: Style.textStyle24.copyWith(color: kPinInActiveBorder,),),
         ],
       ),

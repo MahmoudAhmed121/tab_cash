@@ -6,18 +6,19 @@ import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/core/utils/assets.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/core/widgets/bar_menu_widgets.dart';
-import 'package:tab_cach/features/home/presentation/manager/cubit/statistics_cubit.dart';
+import 'package:tab_cach/features/home/presentation/manager/balance/balance_cubit.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/bar_chart_widgets.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_Appbar_home.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_income_expense_widget.dart';
 import 'package:tab_cach/features/login/presentation/view/login_view.dart';
 import '../../../../../core/utils/shared/cache_helber.dart';
+import '../../manager/statistics/statistics_cubit.dart';
 import 'custom_board_money.dart';
 import 'custom_income_expense_chart.dart';
 
 class HomeBody extends StatelessWidget {
   HomeBody({super.key});
- 
+
   final String dropdownButton = "Month";
   @override
   Widget build(BuildContext context) {
@@ -40,16 +41,24 @@ class HomeBody extends StatelessWidget {
               icon1: Icon(Icons.notifications_none),
               icon2: barMenu(context),
               onPressedIconOne: () {},
-              onPressedIconTwo: () {
-              
-              },
+              onPressedIconTwo: () {},
             ),
             SizedBox(
               height: heightScreen * 0.05,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
-              child: CustomBoardMoney(),
+            BlocConsumer<BalanceCubit, BalanceState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state is BalanceSuccess) {
+                  final balace =state.balanceModel.balance;
+                  return Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
+                    child: CustomBoardMoney(balance: balace),
+                  );
+                }
+                return CircularProgressIndicator();
+              },
             ),
             SizedBox(
               height: heightScreen * 0.06,
@@ -76,9 +85,8 @@ class HomeBody extends StatelessWidget {
                   ),
                 );
               }
-              if(state is StatisticsFailure){
+              if (state is StatisticsFailure) {
                 print(state.erorrMessage);
-
               }
               return Center(child: SizedBox());
             }),
@@ -132,6 +140,4 @@ class HomeBody extends StatelessWidget {
       ),
     );
   }
-
- 
 }

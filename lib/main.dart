@@ -6,10 +6,11 @@ import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/features/history/data/repo/history_repo_impl.dart';
 import 'package:tab_cach/features/history/presentation/manager/cubit/history_cubit.dart';
 import 'package:tab_cach/features/home/data/repo/home_repo_impl.dart';
-import 'package:tab_cach/features/home/presentation/manager/cubit/statistics_cubit.dart';
+import 'package:tab_cach/features/home/presentation/manager/balance/balance_cubit.dart';
 import 'package:tab_cach/features/login/presentation/manager/phone_auth/phone_auth_cubit.dart';
 import 'package:tab_cach/features/splach/presentation/view/splach_view.dart';
 import 'package:tab_cach/features/transaction/presentation/manager/transaction/transaction_cubit.dart';
+import 'features/home/presentation/manager/statistics/statistics_cubit.dart';
 import 'features/onbarding/presentation/view/manager/onboarding_boc/page_view_indicator_bloc.dart';
 
 void main() {
@@ -33,7 +34,8 @@ class TabCach extends StatelessWidget {
           create: (context) => StatisticsCubit(HomeRepoImpl())..getStatis(),
         ),
         BlocProvider(create: (context) => TransactionCubit()),
-        BlocProvider(create: (context) => HistoryCubit(HisterRepoImpl())..data(),)
+        BlocProvider(create: (context) => HistoryCubit(HisterRepoImpl())..data(),),
+        BlocProvider(create: (context) => BalanceCubit(HomeRepoImpl())..getData(),)
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

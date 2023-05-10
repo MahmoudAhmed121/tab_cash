@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_font_icons/flutter_font_icons.dart';
 
 import 'package:iconsax/iconsax.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -28,7 +27,7 @@ class BottomNavBarBody extends StatelessWidget {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: Icon(Iconsax.home),
+        icon: Icon(Iconsax.home5),
         title: ("Home"),
         activeColorPrimary: kPinActiveBorder,
         inactiveColorPrimary: kBackGroundColor,
@@ -40,19 +39,19 @@ class BottomNavBarBody extends StatelessWidget {
         inactiveColorPrimary: kBackGroundColor,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Iconsax.arrow_swap),
+        icon: Icon(Icons.manage_history_rounded),
         title: ("History"),
         activeColorPrimary: kPinActiveBorder,
         inactiveColorPrimary: kBackGroundColor,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(FontAwesome.address_book_o),
+        icon: Icon(Iconsax.activity1),
         title: ("Payments"),
         activeColorPrimary: kPinActiveBorder,
         inactiveColorPrimary: kBackGroundColor,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(FontAwesome.address_book_o),
+        icon: Icon(Iconsax.home_hashtag5),
         title: ("Children"),
         activeColorPrimary: kPinActiveBorder,
         inactiveColorPrimary: kBackGroundColor,
