@@ -31,11 +31,12 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
 
   final TextEditingController passwordEditingController =
       TextEditingController();
-
+    
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
+
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
