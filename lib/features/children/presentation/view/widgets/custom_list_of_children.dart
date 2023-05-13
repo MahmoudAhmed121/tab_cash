@@ -25,7 +25,7 @@ class CustomListOfChildren extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is ChildrenListSuccess){
-          final childrenList =state.childmodel.length;
+          final childrenList =state.childrenmodel.length;
      
   return Container(
           height: heightScreen * 0.18,
@@ -36,8 +36,8 @@ class CustomListOfChildren extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               itemCount: childrenList,
               itemBuilder: (context, index) {
-                     final childrenName =state.childmodel[index].fullName;
-                     final childrenbalance =state.childmodel[index].phoneNumber;
+                     final childrenName =state.childrenmodel[index].fullName;
+                     final childrenbalance =state.childrenmodel[index].phoneNumber;
                 return Container(
                   width: heightScreen * 0.2,
                   margin: EdgeInsets.only(right: widthScreen * 0.031),

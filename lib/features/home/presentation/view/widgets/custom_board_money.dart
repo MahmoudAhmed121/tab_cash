@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tab_cach/core/utils/shared/cache_helber.dart';
 import 'package:tab_cach/core/utils/style.dart';
 
 import '../../../../../constant.dart';
@@ -28,7 +29,7 @@ class CustomBoardMoney extends StatelessWidget {
         children: [
           Text("Balance" , style: Style.textStyle16.copyWith(color: kPinActiveBorder),),
           Text("$balance",style:Style.textStyle30.copyWith(color: ktextWoletColor),),
-          Text("012 435 768 231",style: Style.textStyle24.copyWith(color: kPinInActiveBorder,),),
+          Text("010 1000 1000",style: Style.textStyle24.copyWith(color: kPinInActiveBorder,),),
         ],
       ),
 

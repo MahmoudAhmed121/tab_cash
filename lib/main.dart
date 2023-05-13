@@ -12,6 +12,7 @@ import 'package:tab_cach/features/home/presentation/manager/add_money/add_money_
 import 'package:tab_cach/features/splach/presentation/view/splach_view.dart';
 import 'package:tab_cach/features/transaction/presentation/manager/transaction/transfer_cubit.dart';
 import 'features/children/data/repo/children_repo_impl.dart';
+import 'features/children/presentation/manager/children_list_history.dart/children_list_history_cubit.dart';
 import 'features/home/presentation/manager/balance/balance_cubit.dart';
 import 'features/home/presentation/manager/statistics/statistics_cubit.dart';
 import 'features/onbarding/presentation/view/manager/onboarding_boc/page_view_indicator_bloc.dart';
@@ -43,7 +44,8 @@ class TabCach extends StatelessWidget {
         BlocProvider(create: (context) => HistoryCubit(HisterRepoImpl())..data(),),
         BlocProvider(create: (context) => BalanceCubit(HomeRepoImpl())..getData(),),
         BlocProvider(create: (context) => AddMoneyCubit(),),
-         BlocProvider(create: (context) => ChildrenListCubit(ChildrenRepoImpl())..getData(),),
+        BlocProvider(create: (context) => ChildrenListCubit(ChildrenRepoImpl())..getData(),),
+        BlocProvider(create: (context) => ChikdrenListHistoryCubit(ChildrenRepoImpl())..getListHestory(),),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

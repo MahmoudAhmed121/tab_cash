@@ -23,9 +23,14 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
-
+  
     return BlocConsumer<BalanceCubit, BalanceState>(listener: (context, state) {
-      if (state is BalanceSuccess) {}
+      if (state is BalanceSuccess) {
+
+      }
+      if(state is BalanceFailure){
+        CacheHelber.removeData(key: "phoneNumber");
+      }
     }, builder: (context, state) {
       if (state is BalanceSuccess) {
         final balance = state.balanceModel.balance;
@@ -72,6 +77,7 @@ class HomeBody extends StatelessWidget {
                     listener: (context, state) {
                       if (state is StatisticsFailure) {
                         CacheHelber.removeData(key: "token");
+                        
                         Get.to(LoginView());
                       }
                     },

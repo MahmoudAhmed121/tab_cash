@@ -27,10 +27,7 @@ class CustomLoginModelSheet extends StatefulWidget {
 class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
   final GlobalKey<FormState> key = GlobalKey();
 
-  final TextEditingController phoneEditingController = TextEditingController();
 
-  final TextEditingController passwordEditingController =
-      TextEditingController();
     
   @override
   Widget build(BuildContext context) {
@@ -42,7 +39,8 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            final token = CacheHelber.saveData(
+           
+             CacheHelber.saveData(
                     key: "token", value: state.loginModel.access)
                 .then((value) {
               if (value) {
@@ -116,7 +114,7 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
                           onSaved: (value) {
                             return null;
                           },
-                          textEditingController: phoneEditingController),
+                          textEditingController: LoginCubit.get(context).phoneEditingController),
                     ),
                     SizedBox(
                       height: heightScreen * 0.02,
@@ -135,7 +133,7 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
                         onSaved: (value) {
                           return null;
                         },
-                        textEditingController: passwordEditingController,
+                        textEditingController: LoginCubit.get(context).passwordEditingController,
                         suffixIcon: Icon(
                           Icons.visibility_off,
                           color: kSiginColor,
@@ -170,8 +168,8 @@ class _CustomLoginModelSheetState extends State<CustomLoginModelSheet> {
                           onPressed: () {
                             if (key.currentState!.validate()) {
                               LoginCubit.get(context).postData(
-                                email: phoneEditingController.text,
-                                password: passwordEditingController.text,
+                                email: LoginCubit.get(context).phoneEditingController.text,
+                                password: LoginCubit.get(context).passwordEditingController.text,
                               );
                             }
                           },

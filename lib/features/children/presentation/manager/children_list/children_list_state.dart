@@ -6,9 +6,9 @@ abstract class ChildrenListState {}
 class ChildrenListInitial extends ChildrenListState {}
 class ChildrenListLoading extends ChildrenListState {}
 class ChildrenListSuccess extends ChildrenListState {
- final List<ChildrenModel> childmodel;
+ final List<ChildrenModel> childrenmodel;
 
-  ChildrenListSuccess({required this.childmodel});
+  ChildrenListSuccess({required this.childrenmodel});
 
 }
 class ChildrenListFailure extends ChildrenListState {

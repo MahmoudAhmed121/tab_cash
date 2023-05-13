@@ -19,7 +19,7 @@ class ChildrenListCubit extends Cubit<ChildrenListState> {
         emit(ChildrenListFailure(errMessages: failure.errMessages));
       },
       (childrenList) {
-        emit(ChildrenListSuccess(childmodel: childrenList));
+        emit(ChildrenListSuccess(childrenmodel: childrenList));
       },
     );
   }
