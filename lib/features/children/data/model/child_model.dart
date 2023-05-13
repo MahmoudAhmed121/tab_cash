@@ -1,10 +1,20 @@
+class ChildrenModel {
+    String id;
+    String fullName;
+    String phoneNumber;
+    String picture;
 
+    ChildrenModel({
+        required this.id,
+        required this.fullName,
+        required this.phoneNumber,
+        required this.picture,
+    });
 
-class ChildModel {
-
- final String image ;
- final String name ;
- final String balance ;
-
- ChildModel({required this.image,required this.name,required this.balance});
+    factory ChildrenModel.fromJson(Map<String, dynamic> json) => ChildrenModel(
+        id: json["id"],
+        fullName: json["full_name"],
+        phoneNumber: json["phone_number"],
+        picture: json["picture"],
+    );
 }

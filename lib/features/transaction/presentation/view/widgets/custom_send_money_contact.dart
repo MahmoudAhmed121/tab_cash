@@ -18,7 +18,7 @@ class CustomSendMoneyContact extends StatelessWidget {
       {Key? key, required this.image, required this.name, required this.phone})
       : super(key: key);
   final String image;
-  final String? name;
+  final String name;
   final String phone;
 
   final GlobalKey<FormState> _key = GlobalKey();
@@ -26,17 +26,21 @@ class CustomSendMoneyContact extends StatelessWidget {
   TextEditingController phoneEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
     return BlocConsumer<TransactionCubit, TransactionState>(
       listener: (context, state) {
         if (state is TransactionSuccess) {
-
-          final amount =state.transeferSucessModel.amount;
+          final amount = state.transeferSucessModel.amount;
           final number = state.transeferSucessModel.number;
-          final dateCreated =state.transeferSucessModel.dateCreated;
-          Get.to(CustomReceipt(amount:amount ,dateTime:dateCreated ,number: number,name:name ,image:image,));
+          final dateCreated = state.transeferSucessModel.dateCreated;
+          Get.to(CustomReceipt(
+            amount: amount,
+            dateTime: dateCreated,
+            number: number,
+            name: name,
+            image: image,
+          ));
         }
         if (state is TransactionFailure) {
           CacheHelber.removeData(key: "token");
@@ -52,7 +56,8 @@ class CustomSendMoneyContact extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
           );
-        }if (state is TransactionNotFound) {
+        }
+        if (state is TransactionNotFound) {
           Get.snackbar(
             "Message",
             "",
@@ -62,7 +67,6 @@ class CustomSendMoneyContact extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
           );
-
         }
       },
       builder: (context, state) {
@@ -119,7 +123,6 @@ class CustomSendMoneyContact extends StatelessWidget {
                         height: heightScreen * 0.08,
                       ),
 
-
                       CustomTextMoneyField(
                           textEditingController: textEditingController,
                           validator: (value) {
@@ -143,10 +146,9 @@ class CustomSendMoneyContact extends StatelessWidget {
                                 if (_key.currentState!.validate()) {
                                   BlocProvider.of<TransactionCubit>(context)
                                       .sendMoney(
-                                          user: textEditingController.text,
-                                          money: phone);
+                                          user: phone,
+                                          money: textEditingController.text);
                                 }
-
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: kPinInActiveField,

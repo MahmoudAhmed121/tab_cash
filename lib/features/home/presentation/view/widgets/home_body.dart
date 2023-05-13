@@ -17,128 +17,146 @@ import 'custom_board_money.dart';
 import 'custom_income_expense_chart.dart';
 
 class HomeBody extends StatelessWidget {
-  HomeBody({super.key});
- 
   final String dropdownButton = "Month";
+
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.03),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: heightScreen * 0.07,
-            ),
-            CustomAppbarHome(
-              image: Images.person4,
-              title: "Hi Mohamed",
-              icon1: Icon(Icons.notifications_none),
-              icon2: barMenu(context),
-              onPressedIconOne: () {},
-            ),
-            SizedBox(
-              height: heightScreen * 0.05,
-            ),
-           BlocConsumer<BalanceCubit, BalanceState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            if (state is BalanceSuccess) {
-              final balace =state.balanceModel.balance;
-              return Padding(
-                padding:
-                EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
-                child: CustomBoardMoney(balance: balace),
-              );
-            }
-               return Center(child: CircularProgressIndicator());
-            }),
-            SizedBox(
-              height: heightScreen * 0.06,
-            ),
-            Text(
-              "Statistics",
-              style: GoogleFonts.josefinSans(
-                  textStyle: Style.textStyle26, color: kbackgroundbottomBar),
-            ),
-
-            BlocConsumer<StatisticsCubit, StatisticsState>(
-                listener: (context, state) {
-              if (state is StatisticsFailure) {
-                CacheHelber.removeData(key: "token");
-                Get.to(LoginView());
-              }
-            }, builder: (context, state) {
-              if (state is StatisticsSuccess) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
-                  child: SizedBox(
-                    height: heightScreen * 0.25,
-                    child: BarChartSample2(),
-                  ),
-                );
-              }
-              if(state is StatisticsFailure){
-                print(state.erorrMessage);
-
-              }
-              return Center(child: SizedBox(height: heightScreen*0.02,));
-            }),
-
-            SizedBox(
-              height: heightScreen * 0.005,
-            ),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.17),
-              child: Row(
+    return BlocConsumer<BalanceCubit, BalanceState>(listener: (context, state) {
+      if (state is BalanceSuccess) {}
+    }, builder: (context, state) {
+      if (state is BalanceSuccess) {
+        final balance = state.balanceModel.balance;
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.03),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomIncomeExpenseChart(
-                    color: kButtomBack,
-                    title: " Income",
+                  SizedBox(
+                    height: heightScreen * 0.07,
+                  ),
+                  CustomAppbarHome(
+                    image: Images.person4,
+                    title: "Hi Mohamed",
+                    icon1: Icon(Icons.notifications_none),
+                    icon2: barMenu(context),
+                    onPressedIconOne: () {},
                   ),
                   SizedBox(
-                    width: widthScreen * 0.075,
+                    height: heightScreen * 0.05,
                   ),
-                  CustomIncomeExpenseChart(
-                    color: kExpenseColor,
-                    title: " Expense",
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
+                    child: InkWell(
+                      onTap: () {},
+                      child: CustomBoardMoney(balance: balance),
+                    ),
                   ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: heightScreen * 0.03,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomIncomeExpense(
-                    name: "Income",
-                    money: "\$97.45",
+                  SizedBox(
+                    height: heightScreen * 0.06,
                   ),
-                  CustomIncomeExpense(
-                    name: "Expense",
-                    money: "\$97.45",
+                  Text(
+                    "Statistics",
+                    style: GoogleFonts.josefinSans(
+                      textStyle: Style.textStyle26,
+                      color: kbackgroundbottomBar,
+                    ),
                   ),
-                ],
-              ),
-            ),
+                  BlocConsumer<StatisticsCubit, StatisticsState>(
+                    listener: (context, state) {
+                      if (state is StatisticsFailure) {
+                        CacheHelber.removeData(key: "token");
+                        Get.to(LoginView());
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is StatisticsSuccess) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: widthScreen * 0.04),
+                          child: SizedBox(
+                            height: heightScreen * 0.25,
+                            child: BarChartSample2(),
+                          ),
+                        );
+                      }
+                      if (state is StatisticsFailure) {
+                        print(state.erorrMessage);
+                      }
+                      return Center(
+                        child: SizedBox(
+                          height: heightScreen * 0.02,
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(
+                    height: heightScreen * 0.005,
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: widthScreen * 0.17),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CustomIncomeExpenseChart(
+                          color: kButtomBack,
+                          title: " Income",
+                        ),
+                        SizedBox(
+                          width: widthScreen * 0.075,
+                        ),
+                        CustomIncomeExpenseChart(
+                          color: kExpenseColor,
+                          title: " Expense",
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: heightScreen * 0.03,
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomIncomeExpense(
+                          name: "Income",
+                          money: "\$97.45",
+                        ),
+                        CustomIncomeExpense(
+                          name: "Expense",
+                          money: "\$97.45",
+                        ),
+                      ],
+                    ),
+                  ),
 
-            // BottomNavBarView(),
-          ],
+                  // BottomNavBarView(),
+                ],
+              ),
+            ),
+          ),
+        );
+      }
+      return SizedBox(
+        width: widthScreen,
+        child: Container(
+          color: kBackGroundColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [CircularProgressIndicator()],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
-
- 
 }

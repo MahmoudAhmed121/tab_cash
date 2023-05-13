@@ -69,6 +69,7 @@ class BottomNavBarBody extends StatelessWidget {
         navBarHeight: heightScreen*0.072,
         screens: _buildScreens(),
         items: _navBarsItems(),
+        stateManagement: true,
         confineInSafeArea: true,
         backgroundColor: kbackgroundbottomBar,
         decoration: NavBarDecoration(

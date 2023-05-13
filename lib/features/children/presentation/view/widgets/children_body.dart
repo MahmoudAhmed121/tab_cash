@@ -24,7 +24,7 @@ class ChildrenBody extends StatelessWidget {
             padding:  EdgeInsets.symmetric(horizontal:widthScreen*0.052).copyWith(top: heightScreen*0.07,),
             child: CustomAppbarHome(
               image: Images.person4,
-              title: "Mohamed",
+              title: "Mahmoud",
               icon1: Icon(Icons.add_box_outlined),
               onPressedIconOne:(){
                 showAlertDialog(context);

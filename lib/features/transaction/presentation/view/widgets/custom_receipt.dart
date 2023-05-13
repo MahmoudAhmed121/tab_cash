@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tab_cach/core/widgets/custom_appbar.dart';
-import 'package:tab_cach/features/home/presentation/view/home_view.dart';
-import 'package:tab_cach/features/login/presentation/view/widgets/custom_buttom.dart';
 
 import '../../../../../constant.dart';
 import '../../../../../core/utils/style.dart';
@@ -17,7 +15,7 @@ final DateTime dateTime;
 final String number;
 final String amount;
 final String image;
-final String? name;
+final String name;
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
@@ -61,7 +59,7 @@ final String? name;
                   Divider(thickness: 1,color: kPinInActiveField,),
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.04),
-                    child: CustomRowReceipt(textOne:"Transfer Amount" ,textTwo:"\$ ${number}" ,),
+                    child: CustomRowReceipt(textOne:"Transfer Amount" ,textTwo:"\$ ${amount}" ,),
                   ),
 
                   Container(
@@ -85,7 +83,7 @@ final String? name;
                             backgroundImage: AssetImage(image),
                           ),
                         ),
-                        Text(name!,style: Style.textStyle12.copyWith(color:kReceiptColor2,fontWeight: FontWeight.w600 )),
+                        Text(name,style: Style.textStyle12.copyWith(color:kReceiptColor2,fontWeight: FontWeight.w600 )),
                       ],
                     ),
                   ),
@@ -97,7 +95,7 @@ final String? name;
                   SizedBox(height: heightScreen*0.021,),
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.04),
-                    child: CustomRowReceipt(textOne:"No. Ref" ,textTwo:"$amount",),
+                    child: CustomRowReceipt(textOne:"No. Ref" ,textTwo:"$number",),
 
                   ),
                   SizedBox(height: heightScreen*0.025,),

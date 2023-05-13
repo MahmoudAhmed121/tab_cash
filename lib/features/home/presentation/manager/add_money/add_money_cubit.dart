@@ -13,10 +13,10 @@ class AddMoneyCubit extends Cubit<AddMoneyState> {
   final token  = await CacheHelber.getData(key: "token");
    try {
      final response= await Dio(BaseOptions( headers: {"Authorization": "Bearer ${token}"},),).post("https://tabcash-backend.nourmohamed.com/wallet/api/add-money-credit/",data: {
-       "card_number":"5234567812345678",
-       "cvv":"568",
-       "expiration_data":"05/26",
-       "amount": "100",
+       "card_number":card,
+       "cvv":cvv,
+       "expiration_data":expiration_data,
+       "amount": amount,
      });
 
     emit(AddMoneySuccess());

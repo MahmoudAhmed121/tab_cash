@@ -9,7 +9,7 @@ import 'package:tab_cach/features/history/data/repo/histoty_repo.dart';
 class HisterRepoImpl implements HistoryRepo {
   @override
   Future<Either<ServerFailure, List<HistoryModel>>> getHistoryData() async {
-    HistoryModel historyModel;
+   
     try {
       final token = await CacheHelber.getData(key: "token");
       final response = await Dio(

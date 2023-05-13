@@ -30,6 +30,7 @@ environment:
 dependencies:
   align_positioned: ^3.0.0
   animate_do: ^3.0.2
+  carousel_slider: ^4.2.1
   conditional_builder_null_safety: ^0.0.6
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
@@ -46,13 +47,13 @@ dependencies:
   get: ^4.6.5
   google_fonts: ^4.0.4
   iconsax: ^0.0.8
+  liquid_pull_to_refresh: ^3.0.1
   local_auth: ^2.1.6
   lottie: ^2.3.2
   persistent_bottom_nav_bar: ^5.0.2
   pin_code_fields: ^7.4.0
   shared_preferences: ^2.1.0
   smooth_page_indicator: ^1.0.1
-  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

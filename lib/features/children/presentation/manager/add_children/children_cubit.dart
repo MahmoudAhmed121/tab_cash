@@ -1,12 +1,14 @@
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tab_cach/core/utils/shared/cache_helber.dart';
 
 part 'children_state.dart';
 
 class ChildrenCubit extends Cubit<ChildrenState> {
   ChildrenCubit() : super(ChildrenInitial());
+
+  static ChildrenCubit get(context) => BlocProvider.of(context);
 
   Future<void> addChildren(
       {required String full_name,
@@ -32,9 +34,10 @@ class ChildrenCubit extends Cubit<ChildrenState> {
       );
       emit(ChildrenSuccess());
     } on DioError catch (e) {
-      if (e.response!.statusCode == 401) {
+      // ServerFailure.fromResponse(e.response!.statusCode, e.response!.data);
+      if (e.response!.statusCode == 400) {
         emit(
-          ChildrenFailure("This number is not registered"),
+          ChildrenFailure(e.response!.data["phone_number"][0]),
         );
       }
     }
