@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/shared/cache_helber.dart';
 import 'package:tab_cach/features/bottom_bar/presentation/view/bottom_nav_bar.dart';
 import 'package:tab_cach/features/home/presentation/manager/add_money/add_money_cubit.dart';
@@ -47,7 +48,7 @@ class CustomAddMoneyBody extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           appBar: CustomAppBar(
             context,
-            title: "Add Money",
+            title: "Add Money".translat(context),
             textStyle: GoogleFonts.josefinSans(
                 textStyle: Style.textStyle26, color: kContainerColor),
           ),
@@ -66,7 +67,7 @@ class CustomAddMoneyBody extends StatelessWidget {
                     validator: (textOne) {
                       return null;
                     },
-                    title: "Card Number",
+                    title: "Card Number".tr,
                     hintText: "1234 1234 1234 1234",
                     heightField: heightScreen * 0.07,
                     widthField: widthScreen * 0.8,
@@ -81,7 +82,7 @@ class CustomAddMoneyBody extends StatelessWidget {
                         validator: (textTwo) {
                           return null;
                         },
-                        title: "EXPIRATION",
+                        title: "EXPIRATION".translat(context),
                         hintText: "MM/YY",
                         heightField: heightScreen * 0.07,
                         widthField: widthScreen * 0.5,
@@ -109,7 +110,7 @@ class CustomAddMoneyBody extends StatelessWidget {
                     validator: (textFour) {
                       return null;
                     },
-                    title: "Amount",
+                    title: "Amount".translat(context),
                     hintText: "\$0",
                     heightField: heightScreen * 0.07,
                     widthField: widthScreen * 0.8,
@@ -137,7 +138,7 @@ class CustomAddMoneyBody extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'Sdd Money ',
+                          'Sdd Money '.translat(context),
                           style: GoogleFonts.inter(
                               textStyle: Style.textStyle20,
                               color: kContainerColor),

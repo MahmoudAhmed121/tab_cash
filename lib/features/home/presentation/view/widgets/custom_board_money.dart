@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tab_cach/core/utils/shared/cache_helber.dart';
+import 'package:get/get_utils/get_utils.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/style.dart';
 
 import '../../../../../constant.dart';
@@ -27,7 +28,7 @@ class CustomBoardMoney extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Balance" , style: Style.textStyle16.copyWith(color: kPinActiveBorder),),
+          Text("Balance".translat(context) , style: Style.textStyle16.copyWith(color: kPinActiveBorder),),
           Text("$balance",style:Style.textStyle30.copyWith(color: ktextWoletColor),),
           Text("010 1000 1000",style: Style.textStyle24.copyWith(color: kPinInActiveBorder,),),
         ],

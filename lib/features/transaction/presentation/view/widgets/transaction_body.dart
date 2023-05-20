@@ -1,16 +1,11 @@
 import 'package:animate_do/animate_do.dart';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/style.dart';
-
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_contact_widgets.dart';
-
 import '../../../../../constant.dart';
-import '../../../../../core/widgets/custom_appbar.dart';
-import '../../../../home/presentation/view/widgets/custom_Appbar_home.dart';
-import '../../../data/model/transaction_model.dart';
 import 'custom_listView_contacts.dart';
 
 class TransactionBody extends StatelessWidget {
@@ -33,7 +28,7 @@ class TransactionBody extends StatelessWidget {
               SizedBox(
                 width: widthScreen,
                 child: Text(
-                  "Transactions",
+                  "Transactions".translat(context),
                   style: GoogleFonts.josefinSans(
                       textStyle: Style.textStyle26, color: kContainerColor),
                   textAlign: TextAlign.center,
@@ -46,7 +41,7 @@ class TransactionBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Contacts",
+                    "Contacts".translat(context),
                     style: GoogleFonts.prompt(
                         textStyle: Style.textStyle20,
                         color: kPinActiveBorder,
@@ -63,7 +58,7 @@ class TransactionBody extends StatelessWidget {
                 padding: EdgeInsets.only(
                     left: widthScreen * 0.03, bottom: heightScreen * 0.01),
                 child: Text(
-                  "Recent",
+                  "Recent".translat(context),
                   style: GoogleFonts.prompt(
                       textStyle: Style.textStyle14,
                       color: kPinInActiveBorder,
@@ -81,14 +76,14 @@ class TransactionBody extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "All Contact",
+                        "All Contact".translat(context),
                         style: GoogleFonts.prompt(
                             textStyle: Style.textStyle14,
                             color: kPinInActiveBorder,
                             fontWeight: FontWeight.w400),
                       ),
                       Text(
-                        "See All",
+                        "See All".translat(context),
                         style: GoogleFonts.prompt(
                             textStyle: Style.textStyle12,
                             color: kPinActiveBorder,

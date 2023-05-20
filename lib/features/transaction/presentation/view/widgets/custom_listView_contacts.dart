@@ -50,7 +50,11 @@ final List<TransactionModel> userContact = [
         itemBuilder: (context, index) {
           return InkWell(
             onTap: (){
-              Get.to(CustomSendMoneyContact(image: userContact[index].image,name:userContact[index].name,phone:userContact[index].phone,));
+             
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return CustomSendMoneyContact(image: userContact[index].image,name:userContact[index].name,phone:userContact[index].phone,);
+              
+             },));
             },
             child: FadeInRight(
               animate: true,

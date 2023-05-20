@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:tab_cach/constant.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/features/children/presentation/manager/add_children/children_cubit.dart';
 
 import '../../../../../core/widgets/custom_text_form_faild.dart';
@@ -48,7 +49,7 @@ Future<void> showAlertDialog(BuildContext context) async {
           builder: (context, state) {
             return AlertDialog(
               backgroundColor: kContainerColor,
-              title: Text('Add children'),
+              title: Text('Add children'.translat(context)),
               content: SingleChildScrollView(
                 child: ListBody(
                   children: [

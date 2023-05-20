@@ -2,15 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/features/children/presentation/manager/children_list/children_list_cubit.dart';
 import '../../../../../constant.dart';
 import '../../../../../core/utils/shared/cache_helber.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../login/presentation/view/login_view.dart';
 
-class CustomListOfChildren extends StatelessWidget {
+class CustomListOfChildren extends StatefulWidget {
   const CustomListOfChildren({Key? key}) : super(key: key);
 
+  @override
+  State<CustomListOfChildren> createState() => _CustomListOfChildrenState();
+}
+
+class _CustomListOfChildrenState extends State<CustomListOfChildren> {
+  @override
+  void initState() {
+    super.initState();
+    
+ChildrenListCubit.get(context).getData();
+
+  }
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
@@ -78,7 +91,7 @@ class CustomListOfChildren extends StatelessWidget {
                         height: heightScreen * 0.023,
                       ),
                       Text(
-                        "  Balance",
+                        "Balance".translat(context),
                         style: GoogleFonts.inter(
                             textStyle: Style.textStyle14,
                             color: kPinActiveBorder,

@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -11,16 +10,19 @@ import 'package:tab_cach/features/home/data/repo/home_repo_impl.dart';
 import 'package:tab_cach/features/home/presentation/manager/add_money/add_money_cubit.dart';
 import 'package:tab_cach/features/splach/presentation/view/splach_view.dart';
 import 'package:tab_cach/features/transaction/presentation/manager/transaction/transfer_cubit.dart';
+import 'core/utils/app_localizations.dart';
+import 'core/utils/cubit/locale_cubit.dart';
 import 'features/children/data/repo/children_repo_impl.dart';
 import 'features/children/presentation/manager/children_list_history.dart/children_list_history_cubit.dart';
 import 'features/home/presentation/manager/balance/balance_cubit.dart';
 import 'features/home/presentation/manager/statistics/statistics_cubit.dart';
 import 'features/onbarding/presentation/view/manager/onboarding_boc/page_view_indicator_bloc.dart';
 import 'features/regis/presentation/manager/phone_auth/phone_auth_cubit.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(const TabCach());
 }
 
@@ -41,18 +43,45 @@ class TabCach extends StatelessWidget {
           create: (context) => StatisticsCubit(HomeRepoImpl())..getStatis(),
         ),
         BlocProvider(create: (context) => TransactionCubit()),
-        BlocProvider(create: (context) => HistoryCubit(HisterRepoImpl())..data(),),
-        BlocProvider(create: (context) => BalanceCubit(HomeRepoImpl())..getData(),),
-        BlocProvider(create: (context) => AddMoneyCubit(),),
-        BlocProvider(create: (context) => ChildrenListCubit(ChildrenRepoImpl())..getData(),),
-        BlocProvider(create: (context) => ChikdrenListHistoryCubit(ChildrenRepoImpl())..getListHestory(),),
+        BlocProvider(
+          create: (context) => HistoryCubit(HisterRepoImpl())..data(),
+        ),
+        BlocProvider(
+          create: (context) => BalanceCubit(HomeRepoImpl())..getData(),
+        ),
+        BlocProvider(
+          create: (context) => AddMoneyCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChildrenListCubit(ChildrenRepoImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ChikdrenListHistoryCubit(ChildrenRepoImpl())..getListHestory(),
+        ),
+        BlocProvider(
+          create: (context) => LocaleCubit()..getSavedLanguage(),
+        ),
       ],
-      child: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: kBackGroundColor,
-            textTheme: GoogleFonts.promptTextTheme()),
-        home: SplachView(),
+      child: BlocBuilder<LocaleCubit, ChangeLocaleState>(
+        builder: (context, state) {
+          return GetMaterialApp(
+            locale: state.locale,
+            supportedLocales: [Locale("en"), Locale("ar")],
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate
+            ],
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData.dark().copyWith(
+                scaffoldBackgroundColor: kBackGroundColor,
+                textTheme: GoogleFonts.promptTextTheme()
+                ),
+            home: SplachView(),
+          );
+        },
       ),
     );
   }

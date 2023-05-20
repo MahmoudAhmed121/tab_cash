@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:lottie/lottie.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_regis_sheet.dart';
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 
@@ -48,7 +50,7 @@ class RegisBody extends StatelessWidget {
                         ),
                       ),
                       CustomRegisSheet(
-                        text: "Sign Up",
+                        text: "Sign Up".translat(context),
                       ),
 
 

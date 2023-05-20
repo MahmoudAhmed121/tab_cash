@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 
 import '../../../../../constant.dart';
 import '../../../../../core/utils/style.dart';
@@ -23,14 +25,14 @@ class HistoryBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "History",
+                  "History".translat(context),
                   style: GoogleFonts.josefinSans(
                       textStyle: Style.textStyle30,
                       color: kContainerColor,
                       fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  "See All  ",
+                  "See All  ".translat(context),
                   style: GoogleFonts.inter(
                       textStyle: Style.textStyle16,
                       color: kPinInActiveBorder,

@@ -11,7 +11,8 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromDioError(DioError dioError) {
     switch (dioError.type) {
-      case DioErrorType.connectTimeout:
+     
+     case DioErrorType.connectTimeout:
         return ServerFailure('Connection timeout with ApiServer');
 
       case DioErrorType.sendTimeout:

@@ -28,7 +28,7 @@ class HomeRepoImpl implements HomeRepo {
 
   @override
   Future<Either<ServerFailure, BalanceModel>> balanceData() async {
-    BalanceModel balanceModel;
+ 
     try {
       final token = await CacheHelber.getData(key: "token");
       final response = await Dio(

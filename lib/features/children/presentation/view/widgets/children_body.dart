@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/assets.dart';
 import 'package:tab_cach/features/children/presentation/view/widgets/custom_list_of_children.dart';
 import 'package:tab_cach/features/children/presentation/view/widgets/custom_list_of_history_children.dart';
@@ -35,7 +36,7 @@ class ChildrenBody extends StatelessWidget {
 
           SizedBox(height: heightScreen*0.07,),
           Text(
-            "Current Balance",
+            "Current Balance".translat(context),
             style: GoogleFonts.prompt(
                 textStyle: Style.textStyle20,
                 color: kPinInActiveBorder,
@@ -43,7 +44,7 @@ class ChildrenBody extends StatelessWidget {
             ),
           ),
           Text(
-            "Current Balance",
+            "Current Balance".translat(context),
             style: GoogleFonts.prompt(
                 textStyle: Style.textStyle30,
                 color: kbackgroundbottomBar,

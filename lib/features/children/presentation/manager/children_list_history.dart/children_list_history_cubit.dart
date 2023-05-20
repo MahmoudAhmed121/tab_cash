@@ -7,8 +7,8 @@ class ChikdrenListHistoryCubit extends Cubit<ChikdrenListHistoryState> {
       : super(ChildrenListHistoryInitial());
 
   ChildrenRepoImpl childrenRepoImpl;
-
-  Future<void> getListHestory() async {
+ 
+  Future<void> getListHestory() async{
     final data = await childrenRepoImpl.childrenListHistory();
 
     data.fold(
@@ -17,8 +17,8 @@ class ChikdrenListHistoryCubit extends Cubit<ChikdrenListHistoryState> {
           ChiklrenListHistoryFailure(errorMessage: failure.errMessages),
         );
       },
-      (data) {
-        emit(ChiklrenListHistorySuccess(childrenListHistoryModel: data));
+      (list) {
+        emit(ChiklrenListHistorySuccess(childrenListHistoryModel: list));
       },
     );
   }

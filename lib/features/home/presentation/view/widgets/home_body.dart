@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/assets.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/core/widgets/bar_menu_widgets.dart';
@@ -10,6 +11,7 @@ import 'package:tab_cach/features/home/presentation/view/widgets/bar_chart_widge
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_Appbar_home.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_income_expense_widget.dart';
 import 'package:tab_cach/features/login/presentation/view/login_view.dart';
+import '../../../../../core/utils/cubit/locale_cubit.dart';
 import '../../../../../core/utils/shared/cache_helber.dart';
 import '../../manager/balance/balance_cubit.dart';
 import '../../manager/statistics/statistics_cubit.dart';
@@ -23,17 +25,21 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
-  
-    return BlocConsumer<BalanceCubit, BalanceState>(listener: (context, state) {
+
+    return BlocConsumer<BalanceCubit, BalanceState>(
+      listener: (context, state) {
       if (state is BalanceSuccess) {
+// print(state);
+print("mahmoud ahmed");
 
       }
-      if(state is BalanceFailure){
+      if (state is BalanceFailure) {
         CacheHelber.removeData(key: "phoneNumber");
+        
       }
     }, builder: (context, state) {
       if (state is BalanceSuccess) {
-        final balance = state.balanceModel.balance;
+   
         return Scaffold(
           body: SingleChildScrollView(
             child: Padding(
@@ -60,14 +66,14 @@ class HomeBody extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
                     child: InkWell(
                       onTap: () {},
-                      child: CustomBoardMoney(balance: balance),
+                      child: CustomBoardMoney(balance: state.balanceModel.balance),
                     ),
                   ),
                   SizedBox(
                     height: heightScreen * 0.06,
                   ),
                   Text(
-                    "Statistics",
+                    "Statistics".translat(context),
                     style: GoogleFonts.josefinSans(
                       textStyle: Style.textStyle26,
                       color: kbackgroundbottomBar,
@@ -77,7 +83,7 @@ class HomeBody extends StatelessWidget {
                     listener: (context, state) {
                       if (state is StatisticsFailure) {
                         CacheHelber.removeData(key: "token");
-                        
+
                         Get.to(LoginView());
                       }
                     },
@@ -113,14 +119,14 @@ class HomeBody extends StatelessWidget {
                       children: [
                         CustomIncomeExpenseChart(
                           color: kButtomBack,
-                          title: " Income",
+                          title: "Income".translat(context),
                         ),
                         SizedBox(
                           width: widthScreen * 0.075,
                         ),
                         CustomIncomeExpenseChart(
                           color: kExpenseColor,
-                          title: " Expense",
+                          title: "Expense".translat(context),
                         ),
                       ],
                     ),
@@ -134,12 +140,28 @@ class HomeBody extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomIncomeExpense(
-                          name: "Income",
-                          money: "\$97.45",
+                        BlocBuilder<LocaleCubit, ChangeLocaleState>(
+                          builder: (context, state) {
+                            return DropdownButton(
+                              value: state.locale.languageCode,
+                                items: ["ar", "en"].map((String items) {
+                                  return DropdownMenuItem<String>(
+                                    child: Text("iteam"),
+                                    value: items,
+                                  );
+                                }).toList(),
+                                onChanged: (newValue) {
+                                  if (newValue != null) {
+                            
+                                    context
+                                        .read<LocaleCubit>()
+                                        .changeLanguage(newValue);
+                                  }
+                                });
+                          },
                         ),
                         CustomIncomeExpense(
-                          name: "Expense",
+                          name: "Expense".translat(context),
                           money: "\$97.45",
                         ),
                       ],

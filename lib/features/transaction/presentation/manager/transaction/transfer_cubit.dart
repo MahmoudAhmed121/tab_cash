@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:tab_cach/core/utils/shared/cache_helber.dart';
-
 import '../../../data/model/transactionSuccess.dart';
 part 'transfer_state.dart';
 
@@ -12,7 +11,7 @@ class TransactionCubit extends Cubit<TransactionState> {
   static TransactionCubit get(context) => BlocProvider.of(context);
 
   Future<void> sendMoney({required String user, required String money}) async {
-    TranseferSucessModel transeferSucessModel;
+    
     final token = await CacheHelber.getData(key: "token");
     try {
       emit(TransactionLoading());

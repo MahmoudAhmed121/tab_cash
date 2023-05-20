@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/widgets/custom_appbar.dart';
 
 import '../../../../../constant.dart';
@@ -23,7 +24,7 @@ final String name;
     return Scaffold(
       appBar:CustomAppBar(
         context,
-        title:"Receipt",
+        title:"Receipt".tr,
         textStyle: GoogleFonts.josefinSans( textStyle: Style.textStyle26, color: kContainerColor),
       ),
       body: Padding(
@@ -47,19 +48,19 @@ final String name;
                       child: Lottie.asset("assets/animations/88860-success-animation.json"),
                   ),
                   Text(
-                    "Transfer Successful!",
+                    "Transfer Successful!".translat(context),
                     style:Style.textStyle18.copyWith(color:kBackGroundColor,fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height:heightScreen*0.01,),
                   Text(
-                    "Your money has been transfered successfuly!",
+                    "Your money has been transfered successfuly!".translat(context),
                     style:Style.textStyle12.copyWith(color:kReceiptColor,fontWeight: FontWeight.w600),textAlign: TextAlign.center,
                   ),
                   SizedBox(height:heightScreen*0.02,),
                   Divider(thickness: 1,color: kPinInActiveField,),
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.04),
-                    child: CustomRowReceipt(textOne:"Transfer Amount" ,textTwo:"\$ ${amount}" ,),
+                    child: CustomRowReceipt(textOne:"Transfer Amount".translat(context) ,textTwo:"\$ ${amount}" ,),
                   ),
 
                   Container(
@@ -90,7 +91,7 @@ final String name;
 
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: widthScreen*0.04),
-                    child: CustomRowReceipt(textOne:"Data & time" ,textTwo:"$dateTime" ,),
+                    child: CustomRowReceipt(textOne:"Data & time".translat(context) ,textTwo:"$dateTime" ,),
                   ),
                   SizedBox(height: heightScreen*0.021,),
                   Padding(
@@ -114,7 +115,7 @@ final String name;
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "See Detail",
+                            "See Detail ".translat(context),
                             style: GoogleFonts.roboto( textStyle: Style.textStyle12, color: kReceiptColor5,fontWeight: FontWeight.w600),
                           ),
 

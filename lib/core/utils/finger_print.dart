@@ -39,7 +39,8 @@ class FingerPrint {
       final token = await CacheHelber.getData(key: "token");
 
       if (token != null) {
-        Get.to(BottomNavBarView());
+        Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavBarView()));
+        //Get.to(BottomNavBarView());
       } else if (skip == null) {
         Get.to(OnboardingView());
       } else {

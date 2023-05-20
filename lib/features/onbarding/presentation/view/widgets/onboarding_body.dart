@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/shared/cache_helber.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/features/login/presentation/view/login_view.dart';
@@ -52,7 +53,7 @@ void submit()async{
                         child: TextButton(
                           onPressed: submit,
                           child: Text(
-                            "skip",
+                            "skip".translat(context),
                             style: Style.textStyle26
                                 .copyWith(color: kContainerColor),
                           ),

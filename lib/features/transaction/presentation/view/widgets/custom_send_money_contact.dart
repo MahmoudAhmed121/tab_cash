@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/shared/cache_helber.dart';
 import 'package:tab_cach/features/login/presentation/view/login_view.dart';
 import 'package:tab_cach/features/transaction/presentation/manager/transaction/transfer_cubit.dart';
@@ -73,7 +74,7 @@ class CustomSendMoneyContact extends StatelessWidget {
         return Scaffold(
           appBar: CustomAppBar(
             context,
-            title: "Send Money",
+            title: "Send Money".translat(context),
             textStyle: GoogleFonts.josefinSans(
                 textStyle: Style.textStyle26, color: kContainerColor),
           ),
@@ -105,7 +106,7 @@ class CustomSendMoneyContact extends StatelessWidget {
                         height: heightScreen * 0.05,
                       ),
                       Text(
-                        "Send Money",
+                        "Send Money".translat(context),
                         style: GoogleFonts.prompt(
                             textStyle: Style.textStyle16,
                             color: kPinInActiveBorder),
@@ -159,7 +160,7 @@ class CustomSendMoneyContact extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                'Send',
+                                'Send'.translat(context),
                                 style: Style.textStyle20
                                     .copyWith(color: kBackGroundColor),
                               ),

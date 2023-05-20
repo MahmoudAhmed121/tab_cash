@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/features/login/presentation/view/widgets/custom_login_sheet.dart';
 import '../../../../../constant.dart';
 
@@ -47,7 +48,7 @@ class LoginBody extends StatelessWidget {
                           child: Column(
                             children: [
                               CustomLoginModelSheet(
-                                text: "Login",
+                                text: "Login".translat(context),
                               )
                             ],
                           ),

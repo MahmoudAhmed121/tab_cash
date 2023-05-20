@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/features/payments/presentation/view/widget/custom_slider_discount.dart';
 
 import '../../../../../constant.dart';
@@ -20,7 +21,7 @@ class PaymentBody extends StatelessWidget {
 
           Center(
             child: Text(
-              "Payment",
+              "Payment".translat(context),
               style: GoogleFonts.prompt(
                   textStyle: Style.textStyle30,
                   color: kContainerColor,
@@ -51,7 +52,7 @@ class PaymentBody extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            "Payment List",
+                            "Payment List".translat(context),
                             style: GoogleFonts.prompt(
                                 textStyle: Style.textStyle18,
                                 color: kReceiptColor2,
@@ -65,7 +66,7 @@ class PaymentBody extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                  "Discount",
+                                  "Discount".translat(context),
                                    style: GoogleFonts.prompt(
                                       textStyle: Style.textStyle18,
                                       color: kBackGroundColor,
@@ -73,7 +74,7 @@ class PaymentBody extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "See More",
+                                "See more".translat(context),
                                 style: GoogleFonts.prompt(
                                     textStyle: Style.textStyle14,
                                     color: kButtomBack,
