@@ -13,7 +13,7 @@ class CustomListOfChildrenHistory extends StatelessWidget {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
 
-    return BlocConsumer<ChikdrenListHistoryCubit, ChikdrenListHistoryState>(
+    return BlocConsumer<ChildrenListHistoryCubit, ChikdrenListHistoryState>(
       listener: (context, state) {},
       builder: (context, state) {
         if (state is ChiklrenListHistorySuccess) {

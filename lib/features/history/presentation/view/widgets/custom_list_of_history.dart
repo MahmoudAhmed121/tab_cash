@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tab_cach/core/widgets/custom_process.dart';
+
 import 'package:tab_cach/features/history/presentation/manager/cubit/history_cubit.dart';
 
-class CustomListOfHistory extends StatelessWidget {
+class CustomListOfHistory extends StatefulWidget {
   const CustomListOfHistory({Key? key}) : super(key: key);
 
+  @override
+  State<CustomListOfHistory> createState() => _CustomListOfHistoryState();
+}
+
+class _CustomListOfHistoryState extends State<CustomListOfHistory> {
+
+  @override
+  void initState() {
+    context.read<HistoryCubit>().data();
+    super.initState();
+
+
+  }
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;

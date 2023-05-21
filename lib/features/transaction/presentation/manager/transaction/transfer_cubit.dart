@@ -32,13 +32,15 @@ class TransactionCubit extends Cubit<TransactionState> {
       if (e.response!.statusCode == 400) {
         print(" mahmoud ahmed eroor ${e.response!.data["amount"][0]}");
 
-        emit(TransactionExiption("There is not enough balance in your wallet"));
+        emit(TransactionFailure("There is not enough balance in your wallet"));
       }
       if (e.response!.statusCode == 401) {
         emit(TransactionFailure("You should login"));
       }
       if (e.response!.statusCode == 404) {
-        emit(TransactionNotFound(e.response!.data["error"])); //
+        emit(TransactionFailure(e.response!.data["error"])); //
+      } if (e.response!.statusCode == 500) {
+        emit(TransactionFailure("The maximum deposit amount is 999 EGP")); //
       }
     }
   }

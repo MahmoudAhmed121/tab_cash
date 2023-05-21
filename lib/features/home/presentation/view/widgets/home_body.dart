@@ -7,6 +7,7 @@ import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/assets.dart';
 import 'package:tab_cach/core/utils/style.dart';
 import 'package:tab_cach/core/widgets/bar_menu_widgets.dart';
+import 'package:tab_cach/features/home/data/repo/home_repo_impl.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/bar_chart_widgets.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_Appbar_home.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_income_expense_widget.dart';
@@ -18,28 +19,35 @@ import '../../manager/statistics/statistics_cubit.dart';
 import 'custom_board_money.dart';
 import 'custom_income_expense_chart.dart';
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
+  @override
+  State<HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
   final String dropdownButton = "Month";
+  final BalanceCubit balanceCubit = BalanceCubit(HomeRepoImpl());
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<BalanceCubit>().getData();
+  }
 
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
 
-    return BlocConsumer<BalanceCubit, BalanceState>(
-      listener: (context, state) {
-      if (state is BalanceSuccess) {
-// print(state);
-print("mahmoud ahmed");
-
-      }
+    return BlocConsumer<BalanceCubit, BalanceState>(listener: (context, state) {
+      if (state is BalanceSuccess) {}
       if (state is BalanceFailure) {
         CacheHelber.removeData(key: "phoneNumber");
-        
+        Get.to(LoginView());
       }
+     
     }, builder: (context, state) {
       if (state is BalanceSuccess) {
-   
         return Scaffold(
           body: SingleChildScrollView(
             child: Padding(
@@ -66,7 +74,8 @@ print("mahmoud ahmed");
                         EdgeInsets.symmetric(horizontal: widthScreen * 0.04),
                     child: InkWell(
                       onTap: () {},
-                      child: CustomBoardMoney(balance: state.balanceModel.balance),
+                      child:
+                          CustomBoardMoney(balance: state.balanceModel.balance),
                     ),
                   ),
                   SizedBox(
@@ -143,7 +152,7 @@ print("mahmoud ahmed");
                         BlocBuilder<LocaleCubit, ChangeLocaleState>(
                           builder: (context, state) {
                             return DropdownButton(
-                              value: state.locale.languageCode,
+                                value: state.locale.languageCode,
                                 items: ["ar", "en"].map((String items) {
                                   return DropdownMenuItem<String>(
                                     child: Text("iteam"),
@@ -152,7 +161,6 @@ print("mahmoud ahmed");
                                 }).toList(),
                                 onChanged: (newValue) {
                                   if (newValue != null) {
-                            
                                     context
                                         .read<LocaleCubit>()
                                         .changeLanguage(newValue);

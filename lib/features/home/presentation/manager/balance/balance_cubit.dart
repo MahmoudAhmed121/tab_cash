@@ -12,35 +12,25 @@ class BalanceCubit extends Cubit<BalanceState> {
 
   final HomeRepoImpl homeRepoImpl;
 
-  StreamController<BalanceState> _dataStreamController = StreamController<BalanceState>();
-  Stream<BalanceState> get dataStream => _dataStreamController.stream;
 
-  void getData() {
-    _dataStreamController.sink.add(BalanceLoading());
+  void getData() async{
+  
+   emit(BalanceLoading());
 
-    homeRepoImpl.balanceData().then((data) {
+  final data= await homeRepoImpl.balanceData();
       data.fold(
         (failure) {
-          _dataStreamController.sink.add(BalanceFailure(failure.errMessages));
+        
           emit(BalanceFailure(failure.errMessages));
         },
         (balanceData) {
-          _dataStreamController.sink.add(BalanceSuccess(balanceModel: balanceData));
+        
           emit(BalanceSuccess(balanceModel: balanceData));
-
+  print("get");
         },
       );
-    }).catchError((e) {
-      _dataStreamController.sink.addError(e.toString());
-      emit(BalanceFailure(e.toString()));
-    });
-
-    Future.delayed(Duration(seconds: 5), getData);
+    }
+   
   }
 
-  @override
-  Future<void> close() {
-    _dataStreamController.close();
-    return super.close();
-  }
-}
+

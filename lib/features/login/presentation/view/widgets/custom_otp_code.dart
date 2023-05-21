@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
-import 'package:tab_cach/features/home/presentation/view/home_view.dart';
 import 'package:tab_cach/features/regis/presentation/view/widgets/custom_send_code_body.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_appbar.dart';

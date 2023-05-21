@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -21,8 +22,8 @@ import 'features/regis/presentation/manager/phone_auth/phone_auth_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const TabCach());
 }
 
@@ -44,10 +45,10 @@ class TabCach extends StatelessWidget {
         ),
         BlocProvider(create: (context) => TransactionCubit()),
         BlocProvider(
-          create: (context) => HistoryCubit(HisterRepoImpl())..data(),
+          create: (context) => HistoryCubit(HisterRepoImpl()),
         ),
         BlocProvider(
-          create: (context) => BalanceCubit(HomeRepoImpl())..getData(),
+          create: (context) => BalanceCubit(HomeRepoImpl()),
         ),
         BlocProvider(
           create: (context) => AddMoneyCubit(),
@@ -57,7 +58,7 @@ class TabCach extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              ChikdrenListHistoryCubit(ChildrenRepoImpl())..getListHestory(),
+              ChildrenListHistoryCubit(ChildrenRepoImpl()),
         ),
         BlocProvider(
           create: (context) => LocaleCubit()..getSavedLanguage(),
@@ -65,7 +66,7 @@ class TabCach extends StatelessWidget {
       ],
       child: BlocBuilder<LocaleCubit, ChangeLocaleState>(
         builder: (context, state) {
-          return GetMaterialApp(
+          return  GetMaterialApp(
             locale: state.locale,
             supportedLocales: [Locale("en"), Locale("ar")],
             localizationsDelegates: const [

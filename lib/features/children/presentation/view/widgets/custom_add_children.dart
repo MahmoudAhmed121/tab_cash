@@ -7,6 +7,8 @@ import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/features/children/presentation/manager/add_children/children_cubit.dart';
 
 import '../../../../../core/widgets/custom_text_form_faild.dart';
+import '../../manager/children_list/children_list_cubit.dart';
+import '../../manager/children_list_history.dart/children_list_history_cubit.dart';
 
 final TextEditingController nameEditingController = TextEditingController();
 final TextEditingController PhoneEditingController = TextEditingController();
@@ -44,6 +46,7 @@ Future<void> showAlertDialog(BuildContext context) async {
                   style: TextStyle(color: Colors.white),
                 ),
               );
+              Navigator.pop(context);
             }
           },
           builder: (context, state) {
@@ -94,6 +97,10 @@ Future<void> showAlertDialog(BuildContext context) async {
                             full_name: nameEditingController.text,
                             phone: PhoneEditingController.text,
                             password: passwordEditingController.text);
+                        context.read<ChildrenListCubit>().getData();
+                        context
+                            .read<ChildrenListHistoryCubit>()
+                            .getListHestory();
                       },
                     );
                   },

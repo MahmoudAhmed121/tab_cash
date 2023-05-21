@@ -42,6 +42,17 @@ class CustomAddMoneyBody extends StatelessWidget {
           CacheHelber.removeData(key: "token");
           Get.to(LoginView());
         }
+         if(state is AddMoneyExption ){
+            Get.snackbar(
+            "Message",
+            "",
+            backgroundColor: Colors.grey,
+            messageText: Text(
+              "${state.errorMessage}",
+              style: TextStyle(color: Colors.white),
+            ),
+            );
+         }
       },
       builder: (context, state) {
         return Scaffold(

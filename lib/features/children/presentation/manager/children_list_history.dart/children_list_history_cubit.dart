@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:tab_cach/features/children/data/repo/children_repo_impl.dart';
 import 'children_list_history_state.dart';
 
-class ChikdrenListHistoryCubit extends Cubit<ChikdrenListHistoryState> {
-  ChikdrenListHistoryCubit(this.childrenRepoImpl)
+class ChildrenListHistoryCubit extends Cubit<ChikdrenListHistoryState> {
+  ChildrenListHistoryCubit(this.childrenRepoImpl)
       : super(ChildrenListHistoryInitial());
 
   ChildrenRepoImpl childrenRepoImpl;

@@ -14,7 +14,7 @@ import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
 import 'custom_text_money_field.dart';
 
-class CustomSendMoneyContact extends StatelessWidget {
+class CustomSendMoneyContact extends StatefulWidget {
   CustomSendMoneyContact(
       {Key? key, required this.image, required this.name, required this.phone})
       : super(key: key);
@@ -22,9 +22,17 @@ class CustomSendMoneyContact extends StatelessWidget {
   final String name;
   final String phone;
 
+  @override
+  State<CustomSendMoneyContact> createState() => _CustomSendMoneyContactState();
+}
+
+class _CustomSendMoneyContactState extends State<CustomSendMoneyContact> {
   final GlobalKey<FormState> _key = GlobalKey();
+
   TextEditingController textEditingController = TextEditingController();
+
   TextEditingController phoneEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
@@ -39,36 +47,15 @@ class CustomSendMoneyContact extends StatelessWidget {
             amount: amount,
             dateTime: dateCreated,
             number: number,
-            name: name,
-            image: image,
+            name: widget.name,
+            image: widget.image,
           ));
         }
         if (state is TransactionFailure) {
           CacheHelber.removeData(key: "token");
           Get.to(LoginView());
         }
-        if (state is TransactionExiption) {
-          Get.snackbar(
-            "Message",
-            "",
-            backgroundColor: Colors.grey,
-            messageText: Text(
-              "${state.exption}",
-              style: TextStyle(color: Colors.white),
-            ),
-          );
-        }
-        if (state is TransactionNotFound) {
-          Get.snackbar(
-            "Message",
-            "",
-            backgroundColor: Colors.grey,
-            messageText: Text(
-              "${state.errorMessage}",
-              style: TextStyle(color: Colors.white),
-            ),
-          );
-        }
+        
       },
       builder: (context, state) {
         return Scaffold(
@@ -98,7 +85,7 @@ class CustomSendMoneyContact extends StatelessWidget {
                         height: heightScreen * 0.18,
                         width: widthScreen * 0.4,
                         child: CircleAvatar(
-                          backgroundImage: AssetImage(image),
+                          backgroundImage: AssetImage(widget.image),
                         ),
                       ),
 
@@ -115,7 +102,7 @@ class CustomSendMoneyContact extends StatelessWidget {
                         height: heightScreen * 0.01,
                       ),
                       Text(
-                        "${name}",
+                        "${widget.name}",
                         style: GoogleFonts.prompt(
                             textStyle: Style.textStyle26,
                             color: kContainerColor),
@@ -147,7 +134,7 @@ class CustomSendMoneyContact extends StatelessWidget {
                                 if (_key.currentState!.validate()) {
                                   BlocProvider.of<TransactionCubit>(context)
                                       .sendMoney(
-                                          user: phone,
+                                          user: widget.phone,
                                           money: textEditingController.text);
                                 }
                               },

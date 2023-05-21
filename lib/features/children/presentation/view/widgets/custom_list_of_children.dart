@@ -9,21 +9,9 @@ import '../../../../../core/utils/shared/cache_helber.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../login/presentation/view/login_view.dart';
 
-class CustomListOfChildren extends StatefulWidget {
+class CustomListOfChildren extends StatelessWidget {
   const CustomListOfChildren({Key? key}) : super(key: key);
 
-  @override
-  State<CustomListOfChildren> createState() => _CustomListOfChildrenState();
-}
-
-class _CustomListOfChildrenState extends State<CustomListOfChildren> {
-  @override
-  void initState() {
-    super.initState();
-    
-ChildrenListCubit.get(context).getData();
-
-  }
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
