@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:tab_cach/core/utils/app_localizations.dart';
 import 'package:tab_cach/core/utils/style.dart';
-
 import '../../../../../constant.dart';
 
 class CustomBoardMoney extends StatelessWidget {

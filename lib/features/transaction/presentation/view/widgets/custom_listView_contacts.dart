@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/features/transaction/presentation/view/widgets/custom_send_money_contact.dart';
 import '../../../../../constant.dart';

@@ -17,7 +17,7 @@ class BalanceFailure extends BalanceState {
   BalanceFailure(this.errMessages);
 }
 class BalanceStreen extends BalanceState {
-  StreamController<BalanceState> streamController;
+ final StreamController<BalanceState> streamController;
   BalanceStreen({
     required this.streamController,
   });

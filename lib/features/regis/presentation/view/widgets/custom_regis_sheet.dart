@@ -170,6 +170,8 @@ class _CustomRegisSheetState extends State<CustomRegisSheet> {
                         },
                         onSaved: (value){
                           phoneNumber = value! ;
+                          return null;
+
                         },
                         textEditingController: phoneEditingController,
                         textInputType: TextInputType.phone,

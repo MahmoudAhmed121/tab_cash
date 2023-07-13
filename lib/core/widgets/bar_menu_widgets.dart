@@ -6,7 +6,7 @@ import 'package:tab_cach/constant.dart';
 import 'package:tab_cach/features/home/presentation/view/widgets/custom_add_money.dart';
 
 FocusedMenuHolder barMenu(BuildContext context) {
-  double heightScreen = MediaQuery.of(context).size.height;
+
   double widthScreen = MediaQuery.of(context).size.width;
 
   return FocusedMenuHolder(

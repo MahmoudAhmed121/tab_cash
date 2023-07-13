@@ -1,6 +1,8 @@
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tab_cach/constant.dart';
@@ -25,6 +27,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const TabCach());
+  DisabledCapture();
+}
+
+DisabledCapture() async {
+  FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
 }
 
 class TabCach extends StatelessWidget {
@@ -57,8 +64,7 @@ class TabCach extends StatelessWidget {
           create: (context) => ChildrenListCubit(ChildrenRepoImpl()),
         ),
         BlocProvider(
-          create: (context) =>
-              ChildrenListHistoryCubit(ChildrenRepoImpl()),
+          create: (context) => ChildrenListHistoryCubit(ChildrenRepoImpl()),
         ),
         BlocProvider(
           create: (context) => LocaleCubit()..getSavedLanguage(),
@@ -66,7 +72,7 @@ class TabCach extends StatelessWidget {
       ],
       child: BlocBuilder<LocaleCubit, ChangeLocaleState>(
         builder: (context, state) {
-          return  GetMaterialApp(
+          return GetMaterialApp(
             locale: state.locale,
             supportedLocales: [Locale("en"), Locale("ar")],
             localizationsDelegates: const [
@@ -78,8 +84,7 @@ class TabCach extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData.dark().copyWith(
                 scaffoldBackgroundColor: kBackGroundColor,
-                textTheme: GoogleFonts.promptTextTheme()
-                ),
+                textTheme: GoogleFonts.promptTextTheme()),
             home: SplachView(),
           );
         },

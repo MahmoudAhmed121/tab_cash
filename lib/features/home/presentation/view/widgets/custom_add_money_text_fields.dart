@@ -11,12 +11,12 @@ class CustomAddMoneyTextFields extends StatelessWidget {
    final double widthField ;
    final double heightField ;
    final TextEditingController  textEditingController;
-   String? Function(String?)? validator;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     double heightScreen = MediaQuery.of(context).size.height;
-    double widthScreen = MediaQuery.of(context).size.width;
+  
 
     return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,

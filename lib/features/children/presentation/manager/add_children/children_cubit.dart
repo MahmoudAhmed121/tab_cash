@@ -31,7 +31,9 @@ class ChildrenCubit extends Cubit<ChildrenState> {
           "phone_number": phone,
           "password": password,
         },
+       
       );
+       debugPrint(respnse.toString());
       emit(ChildrenSuccess());
     } on DioError catch (e) {
       // ServerFailure.fromResponse(e.response!.statusCode, e.response!.data);

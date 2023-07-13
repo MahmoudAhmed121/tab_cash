@@ -5,9 +5,16 @@ import '../../../../../constant.dart';
 
 
 
-class CustomBuildPinCodeField extends StatelessWidget {
-   CustomBuildPinCodeField({Key? key}) : super(key: key);
+class CustomBuildPinCodeField extends StatefulWidget {
+ const  CustomBuildPinCodeField({Key? key}) : super(key: key);
+
+  @override
+  State<CustomBuildPinCodeField> createState() => _CustomBuildPinCodeFieldState();
+}
+
+class _CustomBuildPinCodeFieldState extends State<CustomBuildPinCodeField> {
   late String otpCode ;
+
   @override
   Widget build(BuildContext context) {
     return Container(

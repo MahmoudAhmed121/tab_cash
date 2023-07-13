@@ -19,7 +19,7 @@ class CustomAddMoneyBody extends StatelessWidget {
   final TextEditingController cvc = TextEditingController();
   final TextEditingController amount = TextEditingController();
 
-  GlobalKey<FormState> _key = GlobalKey();
+ final GlobalKey<FormState> _key = GlobalKey();
   Widget build(BuildContext context) {
     final double heightScreen = MediaQuery.of(context).size.height;
     final double widthScreen = MediaQuery.of(context).size.width;

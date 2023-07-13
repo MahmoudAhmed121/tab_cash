@@ -1,3 +1,5 @@
+
+
 import 'package:dio/dio.dart';
 import 'package:tab_cach/core/utils/shared/cache_helber.dart';
 import 'package:tab_cach/features/home/data/model/balance_model.dart';
@@ -9,7 +11,7 @@ import 'package:tab_cach/features/home/data/repo/home_repo.dart';
 class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<ServerFailure, StatisModel>> statisData() async {
-    StatisModel homeModel;
+ 
     try {
       final token = await CacheHelber.getData(key: "token");
       final response = await Dio(

@@ -16,6 +16,7 @@ class FingerPrint {
 
   Future<void> authAuth(BuildContext context) async {
     try {
+      // ignore: unused_local_variable
       bool authenticate = await _localAuthentication.authenticate(
         localizedReason: "Please authenticate to continue",
         authMessages: [

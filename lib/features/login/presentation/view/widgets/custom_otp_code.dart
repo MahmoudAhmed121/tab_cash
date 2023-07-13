@@ -12,9 +12,14 @@ import 'custom_build_pin_code_field.dart';
 import 'custom_buttom.dart';
 
 
-class CustomOtpCode extends StatelessWidget {
-   CustomOtpCode({Key? key}) : super(key: key);
+class CustomOtpCode extends StatefulWidget {
+ const  CustomOtpCode({Key? key}) : super(key: key);
 
+  @override
+  State<CustomOtpCode> createState() => _CustomOtpCodeState();
+}
+
+class _CustomOtpCodeState extends State<CustomOtpCode> {
   final SendCode sendCode = SendCode();
 
   @override
@@ -89,7 +94,6 @@ class CustomOtpCode extends StatelessWidget {
   }
 
    late String otpCode ;
-
 
    void _login (BuildContext context){
      BlocProvider.of<PhoneAuthCubit>(context).submitOTP(otpCode);

@@ -1,5 +1,4 @@
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:tab_cach/features/payments/presentation/view/widget/payment_body.dart';
 
 class PaymentsView extends StatelessWidget {

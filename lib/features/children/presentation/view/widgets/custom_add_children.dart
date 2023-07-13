@@ -8,7 +8,6 @@ import 'package:tab_cach/features/children/presentation/manager/add_children/chi
 
 import '../../../../../core/widgets/custom_text_form_faild.dart';
 import '../../manager/children_list/children_list_cubit.dart';
-import '../../manager/children_list_history.dart/children_list_history_cubit.dart';
 
 final TextEditingController nameEditingController = TextEditingController();
 final TextEditingController PhoneEditingController = TextEditingController();
@@ -19,7 +18,7 @@ Future<void> showAlertDialog(BuildContext context) async {
     barrierDismissible: false,
     builder: (BuildContext context) {
       double heightScreen = MediaQuery.of(context).size.height;
-      double widthScreen = MediaQuery.of(context).size.width;
+   
 
       return BlocProvider(
         create: (context) => ChildrenCubit(),
@@ -98,9 +97,7 @@ Future<void> showAlertDialog(BuildContext context) async {
                             phone: PhoneEditingController.text,
                             password: passwordEditingController.text);
                         context.read<ChildrenListCubit>().getData();
-                        context
-                            .read<ChildrenListHistoryCubit>()
-                            .getListHestory();
+                        
                       },
                     );
                   },

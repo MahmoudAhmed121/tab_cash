@@ -22,86 +22,160 @@ class CustomListOfChildren extends StatelessWidget {
         if (state is ChildrenListFailure) {
           CacheHelber.removeData(key: "token");
           Get.to(LoginView());
-        } 
+        }
+        
       },
       builder: (context, state) {
-        if (state is ChildrenListSuccess){
-          final childrenList =state.childrenmodel.length;
-     
-  return Container(
-          height: heightScreen * 0.18,
-          width: widthScreen,
-          padding: EdgeInsets.only(left: widthScreen * 0.03),
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
-              itemCount: childrenList,
-              itemBuilder: (context, index) {
-                     final childrenName =state.childrenmodel[index].fullName;
-                     final childrenbalance =state.childrenmodel[index].phoneNumber;
-                return Container(
-                  width: heightScreen * 0.2,
-                  margin: EdgeInsets.only(right: widthScreen * 0.031),
-                  padding: EdgeInsets.symmetric(
-                      horizontal: widthScreen * 0.02,
-                      vertical: heightScreen * 0.01),
-                  decoration: BoxDecoration(
-                      color: ktextWoletColor,
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          // Container(
-                          //     height: heightScreen * 0.05,
-                          //     width: widthScreen * 0.09,
-                          //     margin:
-                          //         EdgeInsets.only(right: widthScreen * 0.02),
-                          //     child: Image.asset(ListOfChildren[index].image)),
-                          SizedBox(
-                            child: Text(
-                            childrenName,
-                              style: GoogleFonts.inter(
-                                  textStyle: Style.textStyle18,
-                                  color: kContainerColor,
-                                  fontWeight: FontWeight.w600),
+        if (state is ChildrenListSuccess) {
+          final childrenList = state.childrenmodel.length;
+
+          return Container(
+            height: heightScreen * 0.18,
+            width: widthScreen,
+            padding: EdgeInsets.only(left: widthScreen * 0.03),
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
+                itemCount: childrenList,
+                itemBuilder: (context, index) {
+                  final childrenName = state.childrenmodel[index].fullName;
+                  final childrenbalance =
+                      state.childrenmodel[index].phoneNumber;
+                  return Container(
+                    width: heightScreen * 0.2,
+                    margin: EdgeInsets.only(right: widthScreen * 0.031),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: widthScreen * 0.02,
+                        vertical: heightScreen * 0.01),
+                    decoration: BoxDecoration(
+                        color: ktextWoletColor,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            // Container(
+                            //     height: heightScreen * 0.05,
+                            //     width: widthScreen * 0.09,
+                            //     margin:
+                            //         EdgeInsets.only(right: widthScreen * 0.02),
+                            //     child: Image.asset(ListOfChildren[index].image)),
+                            SizedBox(
+                              child: Text(
+                                childrenName,
+                                style: GoogleFonts.inter(
+                                    textStyle: Style.textStyle18,
+                                    color: kContainerColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
                             ),
-                          ),
-                          Spacer(),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.keyboard_arrow_down),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: heightScreen * 0.023,
-                      ),
-                      Text(
-                        "Balance".translat(context),
-                        style: GoogleFonts.inter(
-                            textStyle: Style.textStyle14,
-                            color: kPinActiveBorder,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: heightScreen * 0.004,
-                      ),
-                      Text(
-                        childrenbalance,
-                        style: GoogleFonts.inter(
-                            textStyle: Style.textStyle18,
-                            color: kContainerColor,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                );
-              }),
-        );
-      
-        }return Center(child: CircularProgressIndicator(),);
+                            Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.keyboard_arrow_down),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: heightScreen * 0.023,
+                        ),
+                        Text(
+                          "Balance".translat(context),
+                          style: GoogleFonts.inter(
+                              textStyle: Style.textStyle14,
+                              color: kPinActiveBorder,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(
+                          height: heightScreen * 0.004,
+                        ),
+                        Text(
+                          childrenbalance,
+                          style: GoogleFonts.inter(
+                              textStyle: Style.textStyle18,
+                              color: kContainerColor,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+          );
+        }
+        return Container(
+          
+            height: heightScreen * 0.18,
+            width: widthScreen,
+            padding: EdgeInsets.only(left: widthScreen * 0.03),
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
+                itemCount: 0,
+                itemBuilder: (context, index) {
+               
+                  return Container(
+                    width: heightScreen * 0.2,
+                    margin: EdgeInsets.only(right: widthScreen * 0.031),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: widthScreen * 0.02,
+                        vertical: heightScreen * 0.01),
+                    decoration: BoxDecoration(
+                        color: ktextWoletColor,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            // Container(
+                            //     height: heightScreen * 0.05,
+                            //     width: widthScreen * 0.09,
+                            //     margin:
+                            //         EdgeInsets.only(right: widthScreen * 0.02),
+                            //     child: Image.asset(ListOfChildren[index].image)),
+                            SizedBox(
+                              child: Text(
+                                "",
+                                style: GoogleFonts.inter(
+                                    textStyle: Style.textStyle18,
+                                    color: kContainerColor,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.keyboard_arrow_down),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: heightScreen * 0.023,
+                        ),
+                        Text(
+                          "Balance".translat(context),
+                          style: GoogleFonts.inter(
+                              textStyle: Style.textStyle14,
+                              color: kPinActiveBorder,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(
+                          height: heightScreen * 0.004,
+                        ),
+                        Text(
+                          "",
+                          style: GoogleFonts.inter(
+                              textStyle: Style.textStyle18,
+                              color: kContainerColor,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+          );
+        
       },
     );
   }

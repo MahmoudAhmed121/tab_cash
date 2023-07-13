@@ -14,6 +14,7 @@ class RegisCubit extends Cubit<RegisState> {
   }) async {
     emit(RegisLoading());
     try {
+      // ignore: unused_local_variable
       final response = await Dio().post(
         "https://tabcash-backend.nourmohamed.com/accounts/api/signup/",
         data: {
@@ -22,6 +23,7 @@ class RegisCubit extends Cubit<RegisState> {
           "password": password,
         },
       );
+   
       emit(RegisSuccess());
     } on DioError catch (e) {
       if (e.response!.statusCode == 400) {
