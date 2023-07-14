@@ -29,6 +29,7 @@ class CustomTextFormFaild extends StatelessWidget {
       controller: textEditingController,
       validator: validator,
       obscureText: obscureText,
+      
       decoration: InputDecoration(
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,

@@ -28,8 +28,8 @@ class LoginCubit extends Cubit<LoginState> {
       final data = LoginModel.fromJson(response.data);
       emit(LoginSuccess(loginModel: data));
     } on DioError catch (e) {
-      print(e);
       if (e.response!.statusCode == 401) {
+        print("my error is ${e.response!.statusCode}");
         emit(LoginFailure("This number is not registered"));
       }
     }
